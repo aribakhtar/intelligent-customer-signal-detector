@@ -114,6 +114,33 @@ def test_buckets_are_ordered_and_sized():
     assert counts == {"urgent": 5, "high": 10, "watch": 15, "stable": 70}
 
 
+def test_movement_flags_accounts_getting_worse():
+    """A score that moved is an alert; a static one is only a report."""
+    def book(scores):
+        made = [sig.Assessment(f"C{i}", f"A{i}", "SMB", 1000.0, None, sc, sc,
+                               "Healthy", []) for i, sc in enumerate(scores)]
+        return pl.to_nodes(made, {})
+
+    first = book([90, 80, 70, 60, 50, 40, 30, 20, 10, 5])
+    # C9 leaps from the bottom of the book to the top; C0 falls to the bottom.
+    second = pl.to_nodes(
+        [sig.Assessment(f"C{i}", f"A{i}", "SMB", 1000.0, None, sc, sc, "Healthy", [])
+         for i, sc in enumerate([5, 80, 70, 60, 50, 40, 30, 20, 10, 95])],
+        {}, previous=first)
+
+    by_id = {n["id"]: n for n in second["nodes"]}
+    assert by_id["C9"]["movement"]["status"] == "escalating"
+    assert by_id["C9"]["movement"]["from_bucket"] == "stable"
+    assert by_id["C9"]["movement"]["delta"] == 90
+    assert by_id["C0"]["movement"]["status"] == "improving"
+    assert by_id["C5"]["movement"]["status"] == "steady", "unchanged score must not alert"
+    assert second["totals"]["escalating_since_last_run"] == 1
+
+    fresh = pl.to_nodes([sig.Assessment("NEW", "N", "SMB", 1.0, None, 50, 50,
+                                        "Healthy", [])], {}, previous=first)
+    assert fresh["nodes"][0]["movement"]["status"] == "new"
+
+
 def test_node_shape_is_stable():
     """The frontend contract - keep these keys stable."""
     a = sig.Assessment("C1", "Acme", "Enterprise", 50_000.0, 30, 80, 120.0,
@@ -121,7 +148,9 @@ def test_node_shape_is_stable():
     a.issue, a.rationale, a.action, a.action_owner = "usage collapse", "Because.", "Call.", "CSM"
     node = pl.to_nodes([a], {"C1": ["crm.csv"]})["nodes"][0]
     assert set(node) == {"id", "label", "bucket", "bucket_rank", "urgency", "issue",
-                         "summary", "action", "drivers", "meta", "sources", "updated_at"}
+                         "summary", "action", "drivers", "meta", "sources",
+                         "movement", "updated_at"}
+    assert node["movement"]["status"] == "new", "no prior run means every node is new"
     assert node["urgency"] == 80 and node["issue"] == "usage collapse"
     assert node["action"] == {"text": "Call.", "owner": "CSM"}
     assert node["drivers"][0]["signal"] == "usage_decline"

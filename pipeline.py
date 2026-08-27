@@ -86,6 +86,16 @@ CANONICAL = [
 ]
 TEXT_FIELDS = ["customer_id", "date", "channel", "text"]
 
+# The column that dates each row, by file kind. Used to rewind a feed to a past
+# date. `contract_end_date` is deliberately absent: it is set at signing and is
+# therefore known in advance, not a record timestamp.
+EVENT_DATE = {
+    "monthly_panel": ("snapshot_date", "month"),
+    "interactions": ("timestamp", "date", "sent_at"),
+    "messages": ("timestamp", "date", "sent_at"),
+    "tickets": ("created_at", "opened_at"),
+}
+
 # Column tokens that mean "this file contains the answer". A drop folder will
 # sooner or later receive an outcomes export sitting beside the feature files,
 # and scoring on it would produce a beautiful, meaningless result. Quarantine is
@@ -243,11 +253,37 @@ def _apply_mappings(df: pd.DataFrame, spec: dict) -> pd.DataFrame:
     return out
 
 
-def consolidate(specs: list[dict]) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
+def _rewind(df: pd.DataFrame, kind: str, as_of, path_name: str) -> pd.DataFrame:
+    """Drop rows dated after `as_of`, so a past date can be scored honestly.
+
+    A current-state export carries no row date and cannot be rewound - it is
+    already "now". Scoring a past date with one of those silently uses future
+    information, so we say so rather than let it pass quietly.
+    """
+    if as_of is None:
+        return df
+    for col in EVENT_DATE.get(kind, ()):
+        if col in df.columns:
+            when = pd.to_datetime(df[col], errors="coerce")
+            kept = df[when <= as_of]
+            print(f"[L2] {path_name}: {len(kept)}/{len(df)} rows at or before "
+                  f"{as_of:%Y-%m-%d}")
+            return kept
+    print(f"[L2] {path_name}: no row date - cannot rewind. Values are current "
+          f"state and may post-date {as_of:%Y-%m-%d}.")
+    return df
+
+
+def consolidate(specs: list[dict], as_of=None) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
     """Layer 2. Fold every classified file into one profile per customer.
 
     Later files win on conflict, but only where they carry a non-null value -
     a partial feed adds to a profile, it never blanks fields another feed filled.
+
+    `as_of` rewinds every dated feed to that point, so the pipeline can score a
+    past date using only what was knowable then. That is what makes its output
+    evaluable and lets history be backfilled; without it a run can only ever
+    describe the present.
     """
     profiles: dict[str, dict] = {}
     texts: list[dict] = []
@@ -270,6 +306,9 @@ def consolidate(specs: list[dict]) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
             continue
         df = pd.read_csv(path).rename(columns=ALIASES)
         src = path.name
+        df = _rewind(df, kind, as_of, src)
+        if df.empty:
+            continue
 
         # Column mappings are for shapes with no dedicated handler. A per-row
         # event table needs aggregating, and letting a column map turn it into a
@@ -304,7 +343,7 @@ def consolidate(specs: list[dict]) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
             # absorbing these as profiles would leave a ticket id in a count field.
             created = pd.to_datetime(df.get("created_at"), errors="coerce")
             resolved = pd.to_datetime(df.get("resolved_at"), errors="coerce")
-            ref = created.max()
+            ref = as_of if as_of is not None else created.max()
             last30 = created > ref - pd.Timedelta(days=30)
             prev30 = (created <= ref - pd.Timedelta(days=30)) &                      (created > ref - pd.Timedelta(days=60))
             unresolved = resolved.isna() | (resolved > ref)
@@ -346,7 +385,36 @@ def consolidate(specs: list[dict]) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
 
 # ============================================================ L4 bucketing
 
-def to_nodes(assessments: list[sig.Assessment], provenance: dict) -> dict:
+def movement(nodes: list[dict], previous: dict | None) -> list[dict]:
+    """Annotate each node with how it changed since the last run.
+
+    A static score is a report; a score that moved is an alert. An account
+    sliding from stable to at-risk in one cycle is more actionable than one that
+    has sat in at-risk for months, and ops should be able to sort on that.
+    """
+    prev = {n["id"]: n for n in (previous or {}).get("nodes", [])}
+    ranks = {b["key"]: b["rank"] for b in BUCKETS}
+    for n in nodes:
+        was = prev.get(n["id"])
+        if was is None:
+            n["movement"] = {"status": "new", "delta": None, "from_bucket": None}
+            continue
+        delta = n["urgency"] - was["urgency"]
+        # Bucket ranks run worst-first, so a FALLING rank means getting worse.
+        crossed = ranks[was["bucket"]] - ranks[n["bucket"]]
+        n["movement"] = {
+            "status": "escalating" if crossed > 0 else
+                      "improving" if crossed < 0 else
+                      "worsening" if delta >= 5 else
+                      "recovering" if delta <= -5 else "steady",
+            "delta": delta,
+            "from_bucket": was["bucket"],
+        }
+    return nodes
+
+
+def to_nodes(assessments: list[sig.Assessment], provenance: dict, as_of=None,
+             previous: dict | None = None) -> dict:
     """Layer 4. Rank the book, bucket it, and emit frontend-ready nodes."""
     ranked = sorted(assessments, key=lambda a: a.risk_score, reverse=True)
     n = len(ranked) or 1
@@ -377,12 +445,16 @@ def to_nodes(assessments: list[sig.Assessment], provenance: dict) -> dict:
             "updated_at": now,
         })
 
+    movement(nodes, previous)
     counts = {b["key"]: sum(1 for x in nodes if x["bucket"] == b["key"]) for b in BUCKETS}
+    escalating = [x for x in nodes if x["movement"]["status"] == "escalating"]
     return {
         "generated_at": now,
+        "as_of": as_of.date().isoformat() if as_of is not None else None,
         "model": sig.MODEL,
         "buckets": [{**b, "count": counts[b["key"]]} for b in BUCKETS],
         "totals": {"customers": len(nodes),
+                   "escalating_since_last_run": len(escalating),
                    "needs_attention": sum(1 for x in nodes if x["bucket_rank"] <= 1),
                    "arr_at_risk": round(sum(x["meta"]["arr_usd"] or 0 for x in nodes
                                             if x["bucket_rank"] <= 1), 2)},
@@ -392,7 +464,7 @@ def to_nodes(assessments: list[sig.Assessment], provenance: dict) -> dict:
 
 # ================================================================ orchestration
 
-def run_once(inbox: Path, out: Path) -> dict:
+def run_once(inbox: Path, out: Path, as_of=None) -> dict:
     client = sig._client()
     if client is None:
         raise sig.NoLLMError("pipeline needs OPENAI_API_KEY in .env")
@@ -406,19 +478,30 @@ def run_once(inbox: Path, out: Path) -> dict:
     for s in specs:
         print(f"L1  {Path(s['path']).name:<38} {s['kind']:<15} via {s['via']}")
 
-    cust, inter, prov = consolidate(specs)
+    cust, inter, prov = consolidate(specs, as_of)
     print(f"L2  {len(cust)} customers consolidated from {len(files)} files, "
-          f"{len(inter)} messages")
+          f"{len(inter)} messages" + (f"  (as of {as_of:%Y-%m-%d})" if as_of else ""))
     if cust.empty:
         print("L2  no identifiable customers - nothing to score")
         return {}
 
-    res = sig.detect(cust, inter, client=client)
+    # Renewal proximity has to be measured from the scoring date, not from today.
+    prev_today = sig.TODAY
+    if as_of is not None:
+        sig.TODAY = as_of.date()
+    try:
+        res = sig.detect(cust, inter, client=client)
+    finally:
+        sig.TODAY = prev_today
     print(f"L3  scored {len(res)} customers ({sum(a.llm_used for a in res)} analysed)")
 
-    payload = to_nodes(res, prov)
+    previous = json.loads(out.read_text(encoding="utf-8")) if out.exists() else None
+    payload = to_nodes(res, prov, as_of, previous)
     out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print("L4  " + "  ".join(f"{b['key']} {b['count']}" for b in payload["buckets"]))
+    esc = payload["totals"]["escalating_since_last_run"]
+    if previous:
+        print(f"    {esc} escalating into a worse bucket since the last run")
     print(f"    -> {out}")
     return payload
 
@@ -429,11 +512,14 @@ def main() -> None:
     ap.add_argument("-o", "--out", type=Path, default=Path("data/nodes.json"))
     ap.add_argument("--watch", type=int, metavar="SECONDS",
                     help="keep polling the inbox every N seconds")
+    ap.add_argument("--as-of", dest="as_of", metavar="YYYY-MM-DD",
+                    help="score as this date, using only records dated on or before it")
     a = ap.parse_args()
+    a.as_of = pd.Timestamp(a.as_of) if a.as_of else None
     a.out.parent.mkdir(parents=True, exist_ok=True)
 
     if not a.watch:
-        run_once(a.inbox, a.out)
+        run_once(a.inbox, a.out, a.as_of)
         return
 
     print(f"watching {a.inbox} every {a.watch}s - ctrl-c to stop")
@@ -442,7 +528,7 @@ def main() -> None:
         state = {(p.name, p.stat().st_mtime) for p in a.inbox.glob("*.csv")}
         if state and state != seen:
             print(f"\n--- {datetime.now():%H:%M:%S}  inbox changed ---")
-            run_once(a.inbox, a.out)
+            run_once(a.inbox, a.out, a.as_of)
             seen = state
         time.sleep(a.watch)
 
