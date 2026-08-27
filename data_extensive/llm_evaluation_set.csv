@@ -1,0 +1,301 @@
+eval_message_id,text,human_sentiment,human_intent
+EVAL0001,"Hi team, Can you send us the renewal pricing and terms for next year? Please advise.",neutral,renewal_question
+EVAL0002,"The API timed out twice this morning, but it recovered without intervention. This is becoming important for our team.",neutral,technical
+EVAL0003,"To be candid, We're still evaluating the workflow and will discuss it internally next week. This is becoming important for our team.",neutral,general
+EVAL0004,"To be candid, The invoice amount doesn't match our purchase order. Can someone review it?",negative,billing
+EVAL0005,We're still evaluating the workflow and will discuss it internally next week. Please advise.,neutral,general
+EVAL0006,Thanks for the update. Can you send us the renewal pricing and terms for next year? Please advise.,neutral,renewal_question
+EVAL0007,"Thanks for the update. The API timed out twice this morning, but it recovered without intervention.",neutral,technical
+EVAL0008,Thanks for the update. Can you send us the renewal pricing and terms for next year?,neutral,renewal_question
+EVAL0009,"To be candid, I've copied our VP because this has been open for three weeks without a resolution. Please advise.",negative,escalation
+EVAL0010,We're looking at alternatives because we're not sure this platform still fits our needs. This is becoming important for our team.,negative,churn_intent
+EVAL0011,"To be candid, We're looking at alternatives because we're not sure this platform still fits our needs. We need an answer this week.",negative,churn_intent
+EVAL0012,"The API timed out twice this morning, but it recovered without intervention. We need an answer this week.",neutral,technical
+EVAL0013,Thanks for the update. We're still evaluating the workflow and will discuss it internally next week. We need an answer this week.,neutral,general
+EVAL0014,Just following up — The latest release has been frustrating and our team is losing patience. We need an answer this week.,negative,general
+EVAL0015,I've copied our VP because this has been open for three weeks without a resolution.,negative,escalation
+EVAL0016,"To be candid, Can you send us the renewal pricing and terms for next year? We need an answer this week.",neutral,renewal_question
+EVAL0017,Just following up — The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.,negative,billing
+EVAL0018,"To be candid, We're looking at alternatives because we're not sure this platform still fits our needs. We need an answer this week.",negative,churn_intent
+EVAL0019,Thanks for the update. I've copied our VP because this has been open for three weeks without a resolution. This is becoming important for our team.,negative,escalation
+EVAL0020,"To be candid, We're looking at alternatives because we're not sure this platform still fits our needs.",negative,churn_intent
+EVAL0021,"Hi team, The latest release has been frustrating and our team is losing patience. We need an answer this week.",negative,general
+EVAL0022,We're looking at alternatives because we're not sure this platform still fits our needs. This is becoming important for our team.,negative,churn_intent
+EVAL0023,"Just following up — The API timed out twice this morning, but it recovered without intervention. Please advise.",neutral,technical
+EVAL0024,Just following up — We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.,negative,churn_intent
+EVAL0025,"Hi team, We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.",negative,churn_intent
+EVAL0026,"Hi team, The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.",positive,general
+EVAL0027,"Hi team, The latest release has been frustrating and our team is losing patience. This is becoming important for our team.",negative,general
+EVAL0028,"Hi team, I've copied our VP because this has been open for three weeks without a resolution.",negative,escalation
+EVAL0029,"To be candid, The new dashboard is a big improvement and adoption has increased. We need an answer this week.",positive,general
+EVAL0030,"Hi team, We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.",negative,churn_intent
+EVAL0031,"Hi team, The API timed out twice this morning, but it recovered without intervention. Please advise.",neutral,technical
+EVAL0032,Just following up — The new dashboard is a big improvement and adoption has increased. Please advise.,positive,general
+EVAL0033,Thanks for the update. We're still evaluating the workflow and will discuss it internally next week. This is becoming important for our team.,neutral,general
+EVAL0034,Just following up — Can you send us the renewal pricing and terms for next year?,neutral,renewal_question
+EVAL0035,"Hi team, The invoice amount doesn't match our purchase order. Can someone review it? Please advise.",negative,billing
+EVAL0036,"To be candid, I've copied our VP because this has been open for three weeks without a resolution. We need an answer this week.",negative,escalation
+EVAL0037,We're looking at alternatives because we're not sure this platform still fits our needs.,negative,churn_intent
+EVAL0038,"To be candid, We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.",negative,churn_intent
+EVAL0039,Thanks for the update. Can you send us the renewal pricing and terms for next year?,neutral,renewal_question
+EVAL0040,Thanks for the update. I've copied our VP because this has been open for three weeks without a resolution. Please advise.,negative,escalation
+EVAL0041,Thanks for the update. I've copied our VP because this has been open for three weeks without a resolution. This is becoming important for our team.,negative,escalation
+EVAL0042,Thanks for the update. I've copied our VP because this has been open for three weeks without a resolution.,negative,escalation
+EVAL0043,"Thanks for the update. The API timed out twice this morning, but it recovered without intervention.",neutral,technical
+EVAL0044,Just following up — Can you send us the renewal pricing and terms for next year? We need an answer this week.,neutral,renewal_question
+EVAL0045,The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.,positive,general
+EVAL0046,Just following up — We're still evaluating the workflow and will discuss it internally next week. Please advise.,neutral,general
+EVAL0047,We're still evaluating the workflow and will discuss it internally next week.,neutral,general
+EVAL0048,"To be candid, Can you send us the renewal pricing and terms for next year?",neutral,renewal_question
+EVAL0049,The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.,negative,billing
+EVAL0050,"Hi team, The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.",negative,billing
+EVAL0051,"Hi team, The new dashboard is a big improvement and adoption has increased. We need an answer this week.",positive,general
+EVAL0052,The latest release has been frustrating and our team is losing patience. We need an answer this week.,negative,general
+EVAL0053,The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.,positive,general
+EVAL0054,"To be candid, Can you send us the renewal pricing and terms for next year? This is becoming important for our team.",neutral,renewal_question
+EVAL0055,Just following up — The latest release has been frustrating and our team is losing patience.,negative,general
+EVAL0056,Can you send us the renewal pricing and terms for next year?,neutral,renewal_question
+EVAL0057,The new dashboard is a big improvement and adoption has increased. Please advise.,positive,general
+EVAL0058,The latest release has been frustrating and our team is losing patience. Please advise.,negative,general
+EVAL0059,The new dashboard is a big improvement and adoption has increased.,positive,general
+EVAL0060,Thanks for the update. We're still evaluating the workflow and will discuss it internally next week.,neutral,general
+EVAL0061,"Hi team, The API timed out twice this morning, but it recovered without intervention. This is becoming important for our team.",neutral,technical
+EVAL0062,Thanks for the update. The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.,negative,billing
+EVAL0063,Just following up — The new dashboard is a big improvement and adoption has increased. We need an answer this week.,positive,general
+EVAL0064,"To be candid, The API timed out twice this morning, but it recovered without intervention. This is becoming important for our team.",neutral,technical
+EVAL0065,Thanks for the update. The latest release has been frustrating and our team is losing patience. We need an answer this week.,negative,general
+EVAL0066,Just following up — The latest release has been frustrating and our team is losing patience.,negative,general
+EVAL0067,"Hi team, I've copied our VP because this has been open for three weeks without a resolution. We need an answer this week.",negative,escalation
+EVAL0068,Just following up — We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.,negative,churn_intent
+EVAL0069,Just following up — The new dashboard is a big improvement and adoption has increased.,positive,general
+EVAL0070,Thanks for the update. The new dashboard is a big improvement and adoption has increased. We need an answer this week.,positive,general
+EVAL0071,Can you send us the renewal pricing and terms for next year? This is becoming important for our team.,neutral,renewal_question
+EVAL0072,"Hi team, We're still evaluating the workflow and will discuss it internally next week. Please advise.",neutral,general
+EVAL0073,"Hi team, The latest release has been frustrating and our team is losing patience.",negative,general
+EVAL0074,Thanks for the update. The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.,positive,general
+EVAL0075,"To be candid, The new dashboard is a big improvement and adoption has increased. Please advise.",positive,general
+EVAL0076,We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.,negative,churn_intent
+EVAL0077,"To be candid, The new dashboard is a big improvement and adoption has increased. Please advise.",positive,general
+EVAL0078,The new dashboard is a big improvement and adoption has increased.,positive,general
+EVAL0079,"To be candid, The invoice amount doesn't match our purchase order. Can someone review it? Please advise.",negative,billing
+EVAL0080,"To be candid, I've copied our VP because this has been open for three weeks without a resolution. Please advise.",negative,escalation
+EVAL0081,"Thanks for the update. The API timed out twice this morning, but it recovered without intervention.",neutral,technical
+EVAL0082,"To be candid, I've copied our VP because this has been open for three weeks without a resolution. This is becoming important for our team.",negative,escalation
+EVAL0083,Thanks for the update. The invoice amount doesn't match our purchase order. Can someone review it? Please advise.,negative,billing
+EVAL0084,Thanks for the update. We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.,negative,churn_intent
+EVAL0085,"Hi team, We're looking at alternatives because we're not sure this platform still fits our needs. This is becoming important for our team.",negative,churn_intent
+EVAL0086,Thanks for the update. Can you send us the renewal pricing and terms for next year? We need an answer this week.,neutral,renewal_question
+EVAL0087,"To be candid, We're still evaluating the workflow and will discuss it internally next week. Please advise.",neutral,general
+EVAL0088,Thanks for the update. The latest release has been frustrating and our team is losing patience. We need an answer this week.,negative,general
+EVAL0089,"Thanks for the update. The API timed out twice this morning, but it recovered without intervention.",neutral,technical
+EVAL0090,Just following up — We're still evaluating the workflow and will discuss it internally next week. Please advise.,neutral,general
+EVAL0091,"Hi team, The new dashboard is a big improvement and adoption has increased.",positive,general
+EVAL0092,We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.,negative,churn_intent
+EVAL0093,"Hi team, We're still evaluating the workflow and will discuss it internally next week. This is becoming important for our team.",neutral,general
+EVAL0094,We're still evaluating the workflow and will discuss it internally next week. We need an answer this week.,neutral,general
+EVAL0095,Thanks for the update. We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.,negative,churn_intent
+EVAL0096,"To be candid, We're looking at alternatives because we're not sure this platform still fits our needs.",negative,churn_intent
+EVAL0097,Just following up — The latest release has been frustrating and our team is losing patience. Please advise.,negative,general
+EVAL0098,We're looking at alternatives because we're not sure this platform still fits our needs.,negative,churn_intent
+EVAL0099,We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.,negative,churn_intent
+EVAL0100,I've copied our VP because this has been open for three weeks without a resolution. This is becoming important for our team.,negative,escalation
+EVAL0101,I've copied our VP because this has been open for three weeks without a resolution. Please advise.,negative,escalation
+EVAL0102,I've copied our VP because this has been open for three weeks without a resolution. This is becoming important for our team.,negative,escalation
+EVAL0103,Just following up — We're looking at alternatives because we're not sure this platform still fits our needs.,negative,churn_intent
+EVAL0104,Thanks for the update. We're looking at alternatives because we're not sure this platform still fits our needs.,negative,churn_intent
+EVAL0105,"Hi team, I've copied our VP because this has been open for three weeks without a resolution. We need an answer this week.",negative,escalation
+EVAL0106,I've copied our VP because this has been open for three weeks without a resolution. This is becoming important for our team.,negative,escalation
+EVAL0107,"To be candid, The API timed out twice this morning, but it recovered without intervention. We need an answer this week.",neutral,technical
+EVAL0108,Thanks for the update. We're looking at alternatives because we're not sure this platform still fits our needs. We need an answer this week.,negative,churn_intent
+EVAL0109,"To be candid, We're still evaluating the workflow and will discuss it internally next week.",neutral,general
+EVAL0110,I've copied our VP because this has been open for three weeks without a resolution. Please advise.,negative,escalation
+EVAL0111,The new dashboard is a big improvement and adoption has increased. Please advise.,positive,general
+EVAL0112,Just following up — I've copied our VP because this has been open for three weeks without a resolution. This is becoming important for our team.,negative,escalation
+EVAL0113,The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.,positive,general
+EVAL0114,"Hi team, We're still evaluating the workflow and will discuss it internally next week.",neutral,general
+EVAL0115,The latest release has been frustrating and our team is losing patience. This is becoming important for our team.,negative,general
+EVAL0116,Just following up — The invoice amount doesn't match our purchase order. Can someone review it?,negative,billing
+EVAL0117,"To be candid, The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.",negative,billing
+EVAL0118,"Thanks for the update. The API timed out twice this morning, but it recovered without intervention.",neutral,technical
+EVAL0119,"Hi team, We're still evaluating the workflow and will discuss it internally next week. Please advise.",neutral,general
+EVAL0120,Just following up — Can you send us the renewal pricing and terms for next year? Please advise.,neutral,renewal_question
+EVAL0121,"To be candid, The API timed out twice this morning, but it recovered without intervention.",neutral,technical
+EVAL0122,Thanks for the update. The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.,positive,general
+EVAL0123,"To be candid, The latest release has been frustrating and our team is losing patience. Please advise.",negative,general
+EVAL0124,"Hi team, The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.",negative,billing
+EVAL0125,Just following up — Can you send us the renewal pricing and terms for next year? This is becoming important for our team.,neutral,renewal_question
+EVAL0126,Just following up — We're looking at alternatives because we're not sure this platform still fits our needs. We need an answer this week.,negative,churn_intent
+EVAL0127,"Hi team, The new dashboard is a big improvement and adoption has increased. Please advise.",positive,general
+EVAL0128,"To be candid, The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.",positive,general
+EVAL0129,"To be candid, The new dashboard is a big improvement and adoption has increased. We need an answer this week.",positive,general
+EVAL0130,Just following up — The latest release has been frustrating and our team is losing patience. This is becoming important for our team.,negative,general
+EVAL0131,Thanks for the update. The new dashboard is a big improvement and adoption has increased. Please advise.,positive,general
+EVAL0132,We're still evaluating the workflow and will discuss it internally next week. We need an answer this week.,neutral,general
+EVAL0133,Just following up — We're looking at alternatives because we're not sure this platform still fits our needs. We need an answer this week.,negative,churn_intent
+EVAL0134,Just following up — We're still evaluating the workflow and will discuss it internally next week. Please advise.,neutral,general
+EVAL0135,"To be candid, I've copied our VP because this has been open for three weeks without a resolution.",negative,escalation
+EVAL0136,Just following up — We're looking at alternatives because we're not sure this platform still fits our needs. This is becoming important for our team.,negative,churn_intent
+EVAL0137,Just following up — We're still evaluating the workflow and will discuss it internally next week. This is becoming important for our team.,neutral,general
+EVAL0138,"To be candid, We're still evaluating the workflow and will discuss it internally next week.",neutral,general
+EVAL0139,The new dashboard is a big improvement and adoption has increased.,positive,general
+EVAL0140,"Hi team, The latest release has been frustrating and our team is losing patience.",negative,general
+EVAL0141,"Hi team, The API timed out twice this morning, but it recovered without intervention. Please advise.",neutral,technical
+EVAL0142,"Thanks for the update. The API timed out twice this morning, but it recovered without intervention. Please advise.",neutral,technical
+EVAL0143,Just following up — Can you send us the renewal pricing and terms for next year? We need an answer this week.,neutral,renewal_question
+EVAL0144,"Hi team, The invoice amount doesn't match our purchase order. Can someone review it? Please advise.",negative,billing
+EVAL0145,The invoice amount doesn't match our purchase order. Can someone review it?,negative,billing
+EVAL0146,The new dashboard is a big improvement and adoption has increased.,positive,general
+EVAL0147,Just following up — I've copied our VP because this has been open for three weeks without a resolution. We need an answer this week.,negative,escalation
+EVAL0148,I've copied our VP because this has been open for three weeks without a resolution. This is becoming important for our team.,negative,escalation
+EVAL0149,"The API timed out twice this morning, but it recovered without intervention. We need an answer this week.",neutral,technical
+EVAL0150,"Hi team, We're still evaluating the workflow and will discuss it internally next week. We need an answer this week.",neutral,general
+EVAL0151,We're still evaluating the workflow and will discuss it internally next week. This is becoming important for our team.,neutral,general
+EVAL0152,"To be candid, We're looking at alternatives because we're not sure this platform still fits our needs. This is becoming important for our team.",negative,churn_intent
+EVAL0153,Thanks for the update. We're still evaluating the workflow and will discuss it internally next week. Please advise.,neutral,general
+EVAL0154,"Hi team, The API timed out twice this morning, but it recovered without intervention.",neutral,technical
+EVAL0155,Just following up — The latest release has been frustrating and our team is losing patience. We need an answer this week.,negative,general
+EVAL0156,Just following up — Can you send us the renewal pricing and terms for next year? Please advise.,neutral,renewal_question
+EVAL0157,Just following up — We're looking at alternatives because we're not sure this platform still fits our needs. This is becoming important for our team.,negative,churn_intent
+EVAL0158,"To be candid, We're looking at alternatives because we're not sure this platform still fits our needs. This is becoming important for our team.",negative,churn_intent
+EVAL0159,Thanks for the update. Can you send us the renewal pricing and terms for next year? This is becoming important for our team.,neutral,renewal_question
+EVAL0160,"Hi team, The latest release has been frustrating and our team is losing patience.",negative,general
+EVAL0161,Just following up — We're still evaluating the workflow and will discuss it internally next week. Please advise.,neutral,general
+EVAL0162,Just following up — The latest release has been frustrating and our team is losing patience. This is becoming important for our team.,negative,general
+EVAL0163,"Hi team, We're still evaluating the workflow and will discuss it internally next week. This is becoming important for our team.",neutral,general
+EVAL0164,"Hi team, We're looking at alternatives because we're not sure this platform still fits our needs. We need an answer this week.",negative,churn_intent
+EVAL0165,Just following up — We're looking at alternatives because we're not sure this platform still fits our needs.,negative,churn_intent
+EVAL0166,Thanks for the update. I've copied our VP because this has been open for three weeks without a resolution.,negative,escalation
+EVAL0167,"Hi team, The invoice amount doesn't match our purchase order. Can someone review it? Please advise.",negative,billing
+EVAL0168,The latest release has been frustrating and our team is losing patience. Please advise.,negative,general
+EVAL0169,"Hi team, The new dashboard is a big improvement and adoption has increased.",positive,general
+EVAL0170,Just following up — The latest release has been frustrating and our team is losing patience. This is becoming important for our team.,negative,general
+EVAL0171,"Hi team, Can you send us the renewal pricing and terms for next year? We need an answer this week.",neutral,renewal_question
+EVAL0172,The latest release has been frustrating and our team is losing patience. This is becoming important for our team.,negative,general
+EVAL0173,We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.,negative,churn_intent
+EVAL0174,"To be candid, The latest release has been frustrating and our team is losing patience. Please advise.",negative,general
+EVAL0175,Just following up — We're still evaluating the workflow and will discuss it internally next week.,neutral,general
+EVAL0176,The new dashboard is a big improvement and adoption has increased.,positive,general
+EVAL0177,Thanks for the update. The new dashboard is a big improvement and adoption has increased. We need an answer this week.,positive,general
+EVAL0178,The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.,positive,general
+EVAL0179,Thanks for the update. The latest release has been frustrating and our team is losing patience. Please advise.,negative,general
+EVAL0180,Just following up — The new dashboard is a big improvement and adoption has increased. Please advise.,positive,general
+EVAL0181,"Just following up — The API timed out twice this morning, but it recovered without intervention. Please advise.",neutral,technical
+EVAL0182,"To be candid, The API timed out twice this morning, but it recovered without intervention. Please advise.",neutral,technical
+EVAL0183,Thanks for the update. We're still evaluating the workflow and will discuss it internally next week. This is becoming important for our team.,neutral,general
+EVAL0184,"Hi team, We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.",negative,churn_intent
+EVAL0185,"Hi team, The API timed out twice this morning, but it recovered without intervention. We need an answer this week.",neutral,technical
+EVAL0186,"Hi team, I've copied our VP because this has been open for three weeks without a resolution.",negative,escalation
+EVAL0187,Thanks for the update. I've copied our VP because this has been open for three weeks without a resolution.,negative,escalation
+EVAL0188,Just following up — The invoice amount doesn't match our purchase order. Can someone review it? This is becoming important for our team.,negative,billing
+EVAL0189,"To be candid, Can you send us the renewal pricing and terms for next year? This is becoming important for our team.",neutral,renewal_question
+EVAL0190,"The API timed out twice this morning, but it recovered without intervention. This is becoming important for our team.",neutral,technical
+EVAL0191,"Hi team, The API timed out twice this morning, but it recovered without intervention. Please advise.",neutral,technical
+EVAL0192,"To be candid, The latest release has been frustrating and our team is losing patience. We need an answer this week.",negative,general
+EVAL0193,"Hi team, The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.",positive,general
+EVAL0194,"To be candid, The invoice amount doesn't match our purchase order. Can someone review it? Please advise.",negative,billing
+EVAL0195,Thanks for the update. I've copied our VP because this has been open for three weeks without a resolution.,negative,escalation
+EVAL0196,Thanks for the update. We're still evaluating the workflow and will discuss it internally next week. This is becoming important for our team.,neutral,general
+EVAL0197,Just following up — Can you send us the renewal pricing and terms for next year? We need an answer this week.,neutral,renewal_question
+EVAL0198,Just following up — We're looking at alternatives because we're not sure this platform still fits our needs.,negative,churn_intent
+EVAL0199,"To be candid, Can you send us the renewal pricing and terms for next year?",neutral,renewal_question
+EVAL0200,"Hi team, The invoice amount doesn't match our purchase order. Can someone review it?",negative,billing
+EVAL0201,"Hi team, I've copied our VP because this has been open for three weeks without a resolution. We need an answer this week.",negative,escalation
+EVAL0202,We're still evaluating the workflow and will discuss it internally next week. Please advise.,neutral,general
+EVAL0203,"To be candid, The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.",negative,billing
+EVAL0204,"To be candid, Can you send us the renewal pricing and terms for next year? This is becoming important for our team.",neutral,renewal_question
+EVAL0205,"Hi team, The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.",negative,billing
+EVAL0206,I've copied our VP because this has been open for three weeks without a resolution. Please advise.,negative,escalation
+EVAL0207,Thanks for the update. The latest release has been frustrating and our team is losing patience.,negative,general
+EVAL0208,"To be candid, The new dashboard is a big improvement and adoption has increased.",positive,general
+EVAL0209,"To be candid, The invoice amount doesn't match our purchase order. Can someone review it? This is becoming important for our team.",negative,billing
+EVAL0210,"Hi team, We're still evaluating the workflow and will discuss it internally next week. Please advise.",neutral,general
+EVAL0211,We're looking at alternatives because we're not sure this platform still fits our needs.,negative,churn_intent
+EVAL0212,Thanks for the update. The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.,negative,billing
+EVAL0213,"To be candid, The latest release has been frustrating and our team is losing patience.",negative,general
+EVAL0214,"To be candid, Can you send us the renewal pricing and terms for next year? This is becoming important for our team.",neutral,renewal_question
+EVAL0215,We're still evaluating the workflow and will discuss it internally next week. This is becoming important for our team.,neutral,general
+EVAL0216,Thanks for the update. Can you send us the renewal pricing and terms for next year?,neutral,renewal_question
+EVAL0217,Just following up — The invoice amount doesn't match our purchase order. Can someone review it? Please advise.,negative,billing
+EVAL0218,"Hi team, I've copied our VP because this has been open for three weeks without a resolution. This is becoming important for our team.",negative,escalation
+EVAL0219,Just following up — We're still evaluating the workflow and will discuss it internally next week. Please advise.,neutral,general
+EVAL0220,The invoice amount doesn't match our purchase order. Can someone review it?,negative,billing
+EVAL0221,"To be candid, We're looking at alternatives because we're not sure this platform still fits our needs. This is becoming important for our team.",negative,churn_intent
+EVAL0222,Just following up — I've copied our VP because this has been open for three weeks without a resolution.,negative,escalation
+EVAL0223,"To be candid, I've copied our VP because this has been open for three weeks without a resolution. We need an answer this week.",negative,escalation
+EVAL0224,"To be candid, Can you send us the renewal pricing and terms for next year? Please advise.",neutral,renewal_question
+EVAL0225,Just following up — I've copied our VP because this has been open for three weeks without a resolution.,negative,escalation
+EVAL0226,"To be candid, The latest release has been frustrating and our team is losing patience. This is becoming important for our team.",negative,general
+EVAL0227,"To be candid, Can you send us the renewal pricing and terms for next year?",neutral,renewal_question
+EVAL0228,Just following up — The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.,negative,billing
+EVAL0229,The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.,positive,general
+EVAL0230,"Hi team, The latest release has been frustrating and our team is losing patience. This is becoming important for our team.",negative,general
+EVAL0231,"Hi team, The API timed out twice this morning, but it recovered without intervention. Please advise.",neutral,technical
+EVAL0232,"Hi team, The new dashboard is a big improvement and adoption has increased. We need an answer this week.",positive,general
+EVAL0233,"Thanks for the update. The API timed out twice this morning, but it recovered without intervention. This is becoming important for our team.",neutral,technical
+EVAL0234,"Hi team, The latest release has been frustrating and our team is losing patience. This is becoming important for our team.",negative,general
+EVAL0235,We're looking at alternatives because we're not sure this platform still fits our needs. We need an answer this week.,negative,churn_intent
+EVAL0236,Just following up — The invoice amount doesn't match our purchase order. Can someone review it? This is becoming important for our team.,negative,billing
+EVAL0237,"To be candid, The API timed out twice this morning, but it recovered without intervention. We need an answer this week.",neutral,technical
+EVAL0238,"To be candid, The new dashboard is a big improvement and adoption has increased. We need an answer this week.",positive,general
+EVAL0239,"To be candid, We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.",negative,churn_intent
+EVAL0240,"To be candid, The latest release has been frustrating and our team is losing patience.",negative,general
+EVAL0241,"To be candid, We're looking at alternatives because we're not sure this platform still fits our needs. This is becoming important for our team.",negative,churn_intent
+EVAL0242,Just following up — The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.,negative,billing
+EVAL0243,"Hi team, The new dashboard is a big improvement and adoption has increased.",positive,general
+EVAL0244,"Thanks for the update. The API timed out twice this morning, but it recovered without intervention.",neutral,technical
+EVAL0245,"Hi team, The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.",positive,general
+EVAL0246,"Thanks for the update. The API timed out twice this morning, but it recovered without intervention. We need an answer this week.",neutral,technical
+EVAL0247,Thanks for the update. I've copied our VP because this has been open for three weeks without a resolution. We need an answer this week.,negative,escalation
+EVAL0248,"To be candid, The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.",positive,general
+EVAL0249,Just following up — The latest release has been frustrating and our team is losing patience.,negative,general
+EVAL0250,"To be candid, The latest release has been frustrating and our team is losing patience. Please advise.",negative,general
+EVAL0251,Thanks for the update. The new dashboard is a big improvement and adoption has increased.,positive,general
+EVAL0252,Just following up — Can you send us the renewal pricing and terms for next year? We need an answer this week.,neutral,renewal_question
+EVAL0253,Just following up — Can you send us the renewal pricing and terms for next year? We need an answer this week.,neutral,renewal_question
+EVAL0254,Thanks for the update. The new dashboard is a big improvement and adoption has increased. Please advise.,positive,general
+EVAL0255,The invoice amount doesn't match our purchase order. Can someone review it? Please advise.,negative,billing
+EVAL0256,Thanks for the update. I've copied our VP because this has been open for three weeks without a resolution.,negative,escalation
+EVAL0257,"To be candid, We're still evaluating the workflow and will discuss it internally next week.",neutral,general
+EVAL0258,"The API timed out twice this morning, but it recovered without intervention. We need an answer this week.",neutral,technical
+EVAL0259,"The API timed out twice this morning, but it recovered without intervention. This is becoming important for our team.",neutral,technical
+EVAL0260,Thanks for the update. The latest release has been frustrating and our team is losing patience. This is becoming important for our team.,negative,general
+EVAL0261,"To be candid, We're still evaluating the workflow and will discuss it internally next week. We need an answer this week.",neutral,general
+EVAL0262,"To be candid, The API timed out twice this morning, but it recovered without intervention. Please advise.",neutral,technical
+EVAL0263,"Hi team, The invoice amount doesn't match our purchase order. Can someone review it?",negative,billing
+EVAL0264,"Just following up — The API timed out twice this morning, but it recovered without intervention. This is becoming important for our team.",neutral,technical
+EVAL0265,"Just following up — The API timed out twice this morning, but it recovered without intervention.",neutral,technical
+EVAL0266,Just following up — We're looking at alternatives because we're not sure this platform still fits our needs. This is becoming important for our team.,negative,churn_intent
+EVAL0267,Thanks for the update. I've copied our VP because this has been open for three weeks without a resolution. This is becoming important for our team.,negative,escalation
+EVAL0268,"Hi team, The invoice amount doesn't match our purchase order. Can someone review it?",negative,billing
+EVAL0269,Just following up — The latest release has been frustrating and our team is losing patience. We need an answer this week.,negative,general
+EVAL0270,"To be candid, The new dashboard is a big improvement and adoption has increased. We need an answer this week.",positive,general
+EVAL0271,The new dashboard is a big improvement and adoption has increased. We need an answer this week.,positive,general
+EVAL0272,We're still evaluating the workflow and will discuss it internally next week. We need an answer this week.,neutral,general
+EVAL0273,We're looking at alternatives because we're not sure this platform still fits our needs.,negative,churn_intent
+EVAL0274,We're looking at alternatives because we're not sure this platform still fits our needs. This is becoming important for our team.,negative,churn_intent
+EVAL0275,Thanks for the update. The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.,negative,billing
+EVAL0276,We're looking at alternatives because we're not sure this platform still fits our needs.,negative,churn_intent
+EVAL0277,Thanks for the update. I've copied our VP because this has been open for three weeks without a resolution. This is becoming important for our team.,negative,escalation
+EVAL0278,Can you send us the renewal pricing and terms for next year?,neutral,renewal_question
+EVAL0279,Can you send us the renewal pricing and terms for next year? This is becoming important for our team.,neutral,renewal_question
+EVAL0280,Just following up — The latest release has been frustrating and our team is losing patience. We need an answer this week.,negative,general
+EVAL0281,The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.,positive,general
+EVAL0282,Thanks for the update. We're looking at alternatives because we're not sure this platform still fits our needs.,negative,churn_intent
+EVAL0283,"Hi team, The API timed out twice this morning, but it recovered without intervention. We need an answer this week.",neutral,technical
+EVAL0284,Thanks for the update. The new dashboard is a big improvement and adoption has increased. Please advise.,positive,general
+EVAL0285,Thanks for the update. The latest release has been frustrating and our team is losing patience. We need an answer this week.,negative,general
+EVAL0286,The new dashboard is a big improvement and adoption has increased. This is becoming important for our team.,positive,general
+EVAL0287,"Hi team, We're looking at alternatives because we're not sure this platform still fits our needs. This is becoming important for our team.",negative,churn_intent
+EVAL0288,"To be candid, We're looking at alternatives because we're not sure this platform still fits our needs. This is becoming important for our team.",negative,churn_intent
+EVAL0289,"Hi team, The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.",negative,billing
+EVAL0290,"To be candid, The latest release has been frustrating and our team is losing patience. Please advise.",negative,general
+EVAL0291,"Hi team, Can you send us the renewal pricing and terms for next year? We need an answer this week.",neutral,renewal_question
+EVAL0292,Thanks for the update. We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.,negative,churn_intent
+EVAL0293,Just following up — The latest release has been frustrating and our team is losing patience.,negative,general
+EVAL0294,"To be candid, We're looking at alternatives because we're not sure this platform still fits our needs. Please advise.",negative,churn_intent
+EVAL0295,"To be candid, The invoice amount doesn't match our purchase order. Can someone review it? We need an answer this week.",negative,billing
+EVAL0296,Thanks for the update. I've copied our VP because this has been open for three weeks without a resolution. We need an answer this week.,negative,escalation
+EVAL0297,"The API timed out twice this morning, but it recovered without intervention. We need an answer this week.",neutral,technical
+EVAL0298,"To be candid, The latest release has been frustrating and our team is losing patience. This is becoming important for our team.",negative,general
+EVAL0299,"Hi team, Can you send us the renewal pricing and terms for next year? We need an answer this week.",neutral,renewal_question
+EVAL0300,"Hi team, I've copied our VP because this has been open for three weeks without a resolution. Please advise.",negative,escalation

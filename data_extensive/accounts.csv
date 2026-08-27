@@ -1,0 +1,701 @@
+account_id,account_name,industry,region,tier,plan,initial_arr,contract_start_date,contract_end_date
+ACC00001,Account 001,Technology,UKI,Mid-Market,Growth,134886,2023-11-01,2024-11-01
+ACC00002,Account 002,Technology,India,SMB,Starter,16954,2023-11-01,2025-11-01
+ACC00003,Account 003,Media,ANZ,SMB,Starter,29390,2023-10-01,2025-10-01
+ACC00004,Account 004,Technology,India,SMB,Starter,37928,2024-01-01,2026-01-01
+ACC00005,Account 005,Professional Services,North America,Mid-Market,Growth,107377,2023-10-01,2025-10-01
+ACC00006,Account 006,Professional Services,DACH,Mid-Market,Growth,146276,2023-12-01,2024-12-01
+ACC00007,Account 007,Professional Services,India,Enterprise,Enterprise,275763,2023-11-01,2024-11-01
+ACC00008,Account 008,Technology,India,SMB,Starter,40059,2024-03-01,2025-03-01
+ACC00009,Account 009,Media,India,Mid-Market,Growth,150022,2023-11-01,2025-11-01
+ACC00010,Account 010,Professional Services,APAC,SMB,Starter,24114,2023-11-01,2025-11-01
+ACC00011,Account 011,Logistics,APAC,SMB,Starter,17989,2024-01-01,2026-01-01
+ACC00012,Account 012,Healthcare,UKI,Mid-Market,Growth,92081,2024-03-01,2026-03-01
+ACC00013,Account 013,Media,DACH,SMB,Starter,28488,2024-03-01,2026-03-01
+ACC00014,Account 014,Financial Services,APAC,SMB,Starter,41658,2024-02-01,2025-02-01
+ACC00015,Account 015,Logistics,North America,Mid-Market,Growth,91224,2023-12-01,2025-12-01
+ACC00016,Account 016,Financial Services,ANZ,Mid-Market,Growth,163365,2024-02-01,2026-02-01
+ACC00017,Account 017,Manufacturing,India,SMB,Starter,28541,2023-10-01,2025-10-01
+ACC00018,Account 018,Media,North America,Mid-Market,Growth,131609,2024-01-01,2025-01-01
+ACC00019,Account 019,Retail,DACH,Enterprise,Enterprise,460028,2024-02-01,2026-02-01
+ACC00020,Account 020,Media,North America,SMB,Starter,43863,2024-03-01,2025-03-01
+ACC00021,Account 021,Retail,DACH,Enterprise,Enterprise,430921,2024-03-01,2025-03-01
+ACC00022,Account 022,Healthcare,UKI,Mid-Market,Growth,122384,2024-01-01,2025-01-01
+ACC00023,Account 023,Retail,APAC,SMB,Starter,30120,2023-10-01,2025-10-01
+ACC00024,Account 024,Technology,APAC,SMB,Starter,31674,2024-03-01,2026-03-01
+ACC00025,Account 025,Media,India,Enterprise,Enterprise,675158,2023-11-01,2024-11-01
+ACC00026,Account 026,Professional Services,India,SMB,Starter,27569,2023-11-01,2024-11-01
+ACC00027,Account 027,Technology,APAC,SMB,Starter,43312,2023-10-01,2025-10-01
+ACC00028,Account 028,Technology,North America,SMB,Starter,40811,2024-02-01,2026-02-01
+ACC00029,Account 029,Professional Services,ANZ,Enterprise,Enterprise,493058,2024-02-01,2026-02-01
+ACC00030,Account 030,Media,India,Mid-Market,Growth,163411,2023-11-01,2025-11-01
+ACC00031,Account 031,Travel,India,Enterprise,Enterprise,541888,2023-12-01,2025-12-01
+ACC00032,Account 032,Manufacturing,ANZ,Mid-Market,Growth,109682,2023-12-01,2024-12-01
+ACC00033,Account 033,Manufacturing,APAC,Mid-Market,Growth,124946,2024-01-01,2025-01-01
+ACC00034,Account 034,Media,ANZ,Enterprise,Enterprise,513632,2024-03-01,2026-03-01
+ACC00035,Account 035,Retail,APAC,Mid-Market,Growth,100604,2024-03-01,2025-03-01
+ACC00036,Account 036,Professional Services,DACH,Mid-Market,Growth,66547,2024-02-01,2025-02-01
+ACC00037,Account 037,Travel,APAC,Enterprise,Enterprise,641694,2023-10-01,2024-10-01
+ACC00038,Account 038,Education,ANZ,Mid-Market,Growth,144692,2023-11-01,2024-11-01
+ACC00039,Account 039,Technology,DACH,Enterprise,Enterprise,258463,2024-01-01,2026-01-01
+ACC00040,Account 040,Logistics,ANZ,Mid-Market,Growth,135175,2023-10-01,2025-10-01
+ACC00041,Account 041,Media,India,Mid-Market,Growth,175060,2023-12-01,2024-12-01
+ACC00042,Account 042,Manufacturing,ANZ,SMB,Starter,35232,2023-10-01,2025-10-01
+ACC00043,Account 043,Healthcare,APAC,SMB,Starter,22454,2024-03-01,2025-03-01
+ACC00044,Account 044,Healthcare,APAC,SMB,Starter,39915,2024-03-01,2025-03-01
+ACC00045,Account 045,Financial Services,North America,SMB,Starter,37741,2023-12-01,2025-12-01
+ACC00046,Account 046,Technology,DACH,SMB,Starter,41088,2023-10-01,2025-10-01
+ACC00047,Account 047,Manufacturing,India,SMB,Starter,29112,2023-11-01,2025-11-01
+ACC00048,Account 048,Retail,UKI,SMB,Starter,33544,2024-03-01,2025-03-01
+ACC00049,Account 049,Education,India,Mid-Market,Growth,60350,2024-02-01,2025-02-01
+ACC00050,Account 050,Retail,UKI,Mid-Market,Growth,115230,2024-02-01,2026-02-01
+ACC00051,Account 051,Media,DACH,Mid-Market,Growth,133611,2023-12-01,2024-12-01
+ACC00052,Account 052,Technology,ANZ,SMB,Starter,44455,2024-01-01,2025-01-01
+ACC00053,Account 053,Logistics,India,SMB,Starter,17420,2024-01-01,2026-01-01
+ACC00054,Account 054,Technology,APAC,Enterprise,Enterprise,624920,2024-03-01,2026-03-01
+ACC00055,Account 055,Media,North America,Mid-Market,Growth,76111,2024-01-01,2025-01-01
+ACC00056,Account 056,Logistics,India,Mid-Market,Growth,99986,2024-02-01,2026-02-01
+ACC00057,Account 057,Financial Services,ANZ,SMB,Starter,37913,2023-12-01,2025-12-01
+ACC00058,Account 058,Professional Services,ANZ,Mid-Market,Growth,85976,2023-10-01,2024-10-01
+ACC00059,Account 059,Media,DACH,SMB,Starter,44839,2024-02-01,2025-02-01
+ACC00060,Account 060,Manufacturing,ANZ,Mid-Market,Growth,129569,2023-12-01,2024-12-01
+ACC00061,Account 061,Retail,ANZ,Enterprise,Enterprise,442801,2024-03-01,2025-03-01
+ACC00062,Account 062,Financial Services,DACH,Mid-Market,Growth,168410,2024-03-01,2026-03-01
+ACC00063,Account 063,Logistics,ANZ,Mid-Market,Growth,54373,2024-02-01,2025-02-01
+ACC00064,Account 064,Logistics,ANZ,Mid-Market,Growth,61813,2023-12-01,2025-12-01
+ACC00065,Account 065,Retail,India,Enterprise,Enterprise,364171,2023-11-01,2025-11-01
+ACC00066,Account 066,Technology,UKI,Mid-Market,Growth,119579,2024-02-01,2026-02-01
+ACC00067,Account 067,Technology,ANZ,SMB,Starter,44951,2024-01-01,2026-01-01
+ACC00068,Account 068,Media,North America,SMB,Starter,41353,2023-10-01,2024-10-01
+ACC00069,Account 069,Education,India,SMB,Starter,39712,2023-11-01,2025-11-01
+ACC00070,Account 070,Financial Services,DACH,SMB,Starter,17959,2024-01-01,2025-01-01
+ACC00071,Account 071,Technology,India,SMB,Starter,29902,2023-12-01,2025-12-01
+ACC00072,Account 072,Manufacturing,APAC,Enterprise,Enterprise,569518,2023-10-01,2024-10-01
+ACC00073,Account 073,Manufacturing,ANZ,Enterprise,Enterprise,523939,2024-02-01,2025-02-01
+ACC00074,Account 074,Technology,ANZ,SMB,Starter,35820,2024-01-01,2026-01-01
+ACC00075,Account 075,Financial Services,North America,Mid-Market,Growth,65292,2023-11-01,2025-11-01
+ACC00076,Account 076,Healthcare,UKI,Mid-Market,Growth,114569,2023-10-01,2024-10-01
+ACC00077,Account 077,Logistics,ANZ,Enterprise,Enterprise,587524,2024-01-01,2026-01-01
+ACC00078,Account 078,Retail,APAC,Mid-Market,Growth,126983,2024-03-01,2025-03-01
+ACC00079,Account 079,Professional Services,APAC,SMB,Starter,42318,2024-01-01,2026-01-01
+ACC00080,Account 080,Logistics,UKI,SMB,Starter,16072,2024-03-01,2026-03-01
+ACC00081,Account 081,Logistics,North America,Mid-Market,Growth,108287,2023-11-01,2025-11-01
+ACC00082,Account 082,Logistics,North America,SMB,Starter,32841,2024-03-01,2026-03-01
+ACC00083,Account 083,Healthcare,APAC,Mid-Market,Growth,86160,2023-11-01,2024-11-01
+ACC00084,Account 084,Professional Services,North America,Enterprise,Enterprise,402409,2024-03-01,2025-03-01
+ACC00085,Account 085,Manufacturing,UKI,Mid-Market,Growth,153126,2023-12-01,2024-12-01
+ACC00086,Account 086,Manufacturing,India,SMB,Starter,17248,2024-02-01,2025-02-01
+ACC00087,Account 087,Retail,India,Enterprise,Enterprise,424316,2023-12-01,2024-12-01
+ACC00088,Account 088,Retail,India,Mid-Market,Growth,86342,2023-11-01,2025-11-01
+ACC00089,Account 089,Healthcare,ANZ,SMB,Starter,41165,2023-11-01,2024-11-01
+ACC00090,Account 090,Logistics,UKI,SMB,Starter,19318,2023-10-01,2025-10-01
+ACC00091,Account 091,Technology,North America,SMB,Starter,15517,2023-11-01,2024-11-01
+ACC00092,Account 092,Travel,North America,Mid-Market,Growth,147218,2024-01-01,2025-01-01
+ACC00093,Account 093,Logistics,India,Mid-Market,Growth,112422,2024-01-01,2025-01-01
+ACC00094,Account 094,Manufacturing,India,Mid-Market,Growth,109245,2024-02-01,2025-02-01
+ACC00095,Account 095,Travel,DACH,SMB,Starter,38830,2024-03-01,2026-03-01
+ACC00096,Account 096,Financial Services,APAC,Mid-Market,Growth,134323,2023-10-01,2025-10-01
+ACC00097,Account 097,Healthcare,APAC,Enterprise,Enterprise,626980,2024-03-01,2026-03-01
+ACC00098,Account 098,Logistics,India,Mid-Market,Growth,59632,2023-10-01,2024-10-01
+ACC00099,Account 099,Technology,India,Enterprise,Enterprise,248872,2023-11-01,2025-11-01
+ACC00100,Account 100,Travel,DACH,Enterprise,Enterprise,579407,2024-02-01,2026-02-01
+ACC00101,Account 101,Education,North America,SMB,Starter,31565,2024-02-01,2025-02-01
+ACC00102,Account 102,Travel,ANZ,Mid-Market,Growth,161777,2024-03-01,2025-03-01
+ACC00103,Account 103,Manufacturing,APAC,Mid-Market,Growth,106370,2024-01-01,2026-01-01
+ACC00104,Account 104,Education,APAC,Mid-Market,Growth,158451,2024-01-01,2025-01-01
+ACC00105,Account 105,Logistics,ANZ,SMB,Starter,25241,2024-01-01,2026-01-01
+ACC00106,Account 106,Media,North America,Mid-Market,Growth,99060,2023-11-01,2024-11-01
+ACC00107,Account 107,Healthcare,APAC,SMB,Starter,42255,2023-10-01,2024-10-01
+ACC00108,Account 108,Logistics,UKI,Mid-Market,Growth,147594,2024-03-01,2025-03-01
+ACC00109,Account 109,Travel,DACH,Mid-Market,Growth,126869,2024-02-01,2025-02-01
+ACC00110,Account 110,Education,ANZ,Enterprise,Enterprise,610764,2023-12-01,2024-12-01
+ACC00111,Account 111,Technology,DACH,Enterprise,Enterprise,481601,2024-02-01,2025-02-01
+ACC00112,Account 112,Manufacturing,UKI,SMB,Starter,33937,2024-02-01,2026-02-01
+ACC00113,Account 113,Logistics,India,Mid-Market,Growth,79392,2023-10-01,2025-10-01
+ACC00114,Account 114,Professional Services,UKI,SMB,Starter,18764,2023-12-01,2025-12-01
+ACC00115,Account 115,Technology,North America,Enterprise,Enterprise,207529,2024-02-01,2025-02-01
+ACC00116,Account 116,Technology,DACH,Enterprise,Enterprise,466544,2024-03-01,2026-03-01
+ACC00117,Account 117,Retail,India,SMB,Starter,15200,2023-11-01,2025-11-01
+ACC00118,Account 118,Financial Services,North America,Mid-Market,Growth,59120,2023-11-01,2024-11-01
+ACC00119,Account 119,Media,DACH,Mid-Market,Growth,99308,2024-01-01,2025-01-01
+ACC00120,Account 120,Logistics,India,SMB,Starter,27125,2023-12-01,2024-12-01
+ACC00121,Account 121,Retail,UKI,Mid-Market,Growth,165781,2023-10-01,2024-10-01
+ACC00122,Account 122,Technology,APAC,Mid-Market,Growth,138338,2023-10-01,2025-10-01
+ACC00123,Account 123,Media,APAC,Mid-Market,Growth,113656,2024-02-01,2026-02-01
+ACC00124,Account 124,Healthcare,DACH,Mid-Market,Growth,78255,2024-02-01,2026-02-01
+ACC00125,Account 125,Professional Services,APAC,SMB,Starter,18633,2023-12-01,2025-12-01
+ACC00126,Account 126,Education,India,SMB,Starter,16488,2023-11-01,2024-11-01
+ACC00127,Account 127,Technology,UKI,SMB,Starter,15251,2023-11-01,2024-11-01
+ACC00128,Account 128,Logistics,North America,Enterprise,Enterprise,447931,2023-12-01,2024-12-01
+ACC00129,Account 129,Education,UKI,Enterprise,Enterprise,701546,2024-03-01,2025-03-01
+ACC00130,Account 130,Manufacturing,India,Enterprise,Enterprise,578676,2024-02-01,2026-02-01
+ACC00131,Account 131,Financial Services,APAC,SMB,Starter,17361,2024-01-01,2025-01-01
+ACC00132,Account 132,Logistics,India,SMB,Starter,30065,2023-10-01,2025-10-01
+ACC00133,Account 133,Education,DACH,Enterprise,Enterprise,604068,2024-03-01,2025-03-01
+ACC00134,Account 134,Logistics,UKI,Enterprise,Enterprise,604707,2023-10-01,2025-10-01
+ACC00135,Account 135,Logistics,North America,SMB,Starter,42263,2024-03-01,2026-03-01
+ACC00136,Account 136,Manufacturing,APAC,Mid-Market,Growth,160688,2023-10-01,2025-10-01
+ACC00137,Account 137,Education,DACH,SMB,Starter,32169,2023-10-01,2025-10-01
+ACC00138,Account 138,Retail,North America,Mid-Market,Growth,79041,2023-12-01,2024-12-01
+ACC00139,Account 139,Manufacturing,DACH,Mid-Market,Growth,119547,2024-02-01,2026-02-01
+ACC00140,Account 140,Retail,UKI,SMB,Starter,38834,2024-03-01,2025-03-01
+ACC00141,Account 141,Manufacturing,UKI,Mid-Market,Growth,69194,2023-12-01,2024-12-01
+ACC00142,Account 142,Healthcare,UKI,Mid-Market,Growth,149642,2024-03-01,2026-03-01
+ACC00143,Account 143,Professional Services,APAC,SMB,Starter,30202,2024-02-01,2026-02-01
+ACC00144,Account 144,Media,North America,Enterprise,Enterprise,511495,2023-11-01,2025-11-01
+ACC00145,Account 145,Technology,DACH,Mid-Market,Growth,107961,2024-03-01,2025-03-01
+ACC00146,Account 146,Healthcare,DACH,SMB,Starter,26532,2024-02-01,2026-02-01
+ACC00147,Account 147,Financial Services,DACH,Mid-Market,Growth,109233,2023-10-01,2025-10-01
+ACC00148,Account 148,Healthcare,India,Mid-Market,Growth,60057,2024-03-01,2026-03-01
+ACC00149,Account 149,Travel,ANZ,SMB,Starter,30162,2024-02-01,2025-02-01
+ACC00150,Account 150,Manufacturing,DACH,SMB,Starter,29736,2024-02-01,2026-02-01
+ACC00151,Account 151,Financial Services,APAC,Enterprise,Enterprise,705721,2023-11-01,2024-11-01
+ACC00152,Account 152,Healthcare,India,Mid-Market,Growth,156295,2023-12-01,2024-12-01
+ACC00153,Account 153,Media,APAC,Mid-Market,Growth,55130,2023-11-01,2024-11-01
+ACC00154,Account 154,Technology,APAC,Mid-Market,Growth,97696,2023-12-01,2025-12-01
+ACC00155,Account 155,Professional Services,North America,SMB,Starter,40377,2023-12-01,2025-12-01
+ACC00156,Account 156,Healthcare,India,SMB,Starter,17159,2023-12-01,2025-12-01
+ACC00157,Account 157,Professional Services,UKI,SMB,Starter,24310,2023-12-01,2025-12-01
+ACC00158,Account 158,Retail,DACH,Mid-Market,Growth,60682,2024-02-01,2026-02-01
+ACC00159,Account 159,Education,UKI,SMB,Starter,36497,2024-03-01,2025-03-01
+ACC00160,Account 160,Education,ANZ,SMB,Starter,25144,2024-02-01,2026-02-01
+ACC00161,Account 161,Travel,North America,SMB,Starter,41646,2023-11-01,2025-11-01
+ACC00162,Account 162,Financial Services,DACH,Mid-Market,Growth,116648,2023-12-01,2025-12-01
+ACC00163,Account 163,Logistics,APAC,SMB,Starter,20906,2023-11-01,2024-11-01
+ACC00164,Account 164,Retail,North America,Enterprise,Enterprise,417547,2023-11-01,2025-11-01
+ACC00165,Account 165,Travel,ANZ,Enterprise,Enterprise,286053,2024-02-01,2025-02-01
+ACC00166,Account 166,Professional Services,UKI,SMB,Starter,36690,2023-12-01,2025-12-01
+ACC00167,Account 167,Retail,ANZ,SMB,Starter,20054,2023-11-01,2024-11-01
+ACC00168,Account 168,Financial Services,APAC,Mid-Market,Growth,144526,2024-01-01,2026-01-01
+ACC00169,Account 169,Manufacturing,APAC,SMB,Starter,37163,2024-03-01,2026-03-01
+ACC00170,Account 170,Media,UKI,SMB,Starter,39654,2024-03-01,2025-03-01
+ACC00171,Account 171,Manufacturing,DACH,Enterprise,Enterprise,504500,2024-01-01,2026-01-01
+ACC00172,Account 172,Education,India,Mid-Market,Growth,110513,2023-12-01,2025-12-01
+ACC00173,Account 173,Manufacturing,India,Mid-Market,Growth,176650,2023-11-01,2024-11-01
+ACC00174,Account 174,Financial Services,ANZ,Mid-Market,Growth,164426,2023-12-01,2025-12-01
+ACC00175,Account 175,Healthcare,ANZ,Enterprise,Enterprise,569244,2024-02-01,2025-02-01
+ACC00176,Account 176,Retail,DACH,SMB,Starter,24340,2023-10-01,2025-10-01
+ACC00177,Account 177,Retail,APAC,SMB,Starter,44665,2024-02-01,2025-02-01
+ACC00178,Account 178,Media,DACH,Mid-Market,Growth,174048,2023-11-01,2024-11-01
+ACC00179,Account 179,Education,India,Mid-Market,Growth,104381,2023-10-01,2025-10-01
+ACC00180,Account 180,Healthcare,DACH,Mid-Market,Growth,80903,2024-01-01,2025-01-01
+ACC00181,Account 181,Healthcare,ANZ,Mid-Market,Growth,53694,2023-12-01,2025-12-01
+ACC00182,Account 182,Retail,North America,Mid-Market,Growth,153727,2023-11-01,2025-11-01
+ACC00183,Account 183,Retail,ANZ,Enterprise,Enterprise,675404,2024-03-01,2026-03-01
+ACC00184,Account 184,Financial Services,North America,SMB,Starter,29699,2024-02-01,2025-02-01
+ACC00185,Account 185,Retail,India,Mid-Market,Growth,83544,2023-11-01,2025-11-01
+ACC00186,Account 186,Manufacturing,DACH,SMB,Starter,18643,2023-12-01,2024-12-01
+ACC00187,Account 187,Education,ANZ,Enterprise,Enterprise,230068,2023-11-01,2025-11-01
+ACC00188,Account 188,Media,India,SMB,Starter,17058,2023-10-01,2024-10-01
+ACC00189,Account 189,Professional Services,UKI,SMB,Starter,35707,2024-02-01,2025-02-01
+ACC00190,Account 190,Financial Services,India,Mid-Market,Growth,88177,2024-01-01,2026-01-01
+ACC00191,Account 191,Education,UKI,Mid-Market,Growth,81531,2024-02-01,2025-02-01
+ACC00192,Account 192,Healthcare,India,SMB,Starter,32153,2023-12-01,2024-12-01
+ACC00193,Account 193,Financial Services,ANZ,SMB,Starter,27794,2024-01-01,2026-01-01
+ACC00194,Account 194,Financial Services,DACH,Enterprise,Enterprise,571435,2023-12-01,2024-12-01
+ACC00195,Account 195,Healthcare,India,Mid-Market,Growth,95193,2023-11-01,2025-11-01
+ACC00196,Account 196,Logistics,India,Enterprise,Enterprise,319890,2023-10-01,2025-10-01
+ACC00197,Account 197,Retail,ANZ,Mid-Market,Growth,156628,2024-03-01,2026-03-01
+ACC00198,Account 198,Retail,UKI,SMB,Starter,37786,2024-01-01,2025-01-01
+ACC00199,Account 199,Technology,UKI,Enterprise,Enterprise,659911,2023-10-01,2024-10-01
+ACC00200,Account 200,Logistics,DACH,Enterprise,Enterprise,389159,2023-10-01,2025-10-01
+ACC00201,Account 201,Technology,North America,Enterprise,Enterprise,749408,2024-01-01,2025-01-01
+ACC00202,Account 202,Financial Services,ANZ,Enterprise,Enterprise,480009,2023-12-01,2025-12-01
+ACC00203,Account 203,Logistics,APAC,Enterprise,Enterprise,466488,2023-10-01,2025-10-01
+ACC00204,Account 204,Education,DACH,SMB,Starter,39356,2024-01-01,2025-01-01
+ACC00205,Account 205,Media,DACH,Mid-Market,Growth,115038,2024-03-01,2026-03-01
+ACC00206,Account 206,Education,North America,SMB,Starter,41252,2023-10-01,2025-10-01
+ACC00207,Account 207,Travel,DACH,Mid-Market,Growth,128964,2023-11-01,2025-11-01
+ACC00208,Account 208,Logistics,ANZ,SMB,Starter,18361,2023-10-01,2025-10-01
+ACC00209,Account 209,Professional Services,ANZ,Mid-Market,Growth,90173,2024-01-01,2026-01-01
+ACC00210,Account 210,Media,DACH,Enterprise,Enterprise,354739,2024-03-01,2026-03-01
+ACC00211,Account 211,Logistics,India,SMB,Starter,16387,2024-03-01,2026-03-01
+ACC00212,Account 212,Financial Services,North America,Mid-Market,Growth,85986,2024-03-01,2026-03-01
+ACC00213,Account 213,Retail,North America,Mid-Market,Growth,97619,2024-02-01,2025-02-01
+ACC00214,Account 214,Media,North America,Mid-Market,Growth,161236,2024-02-01,2025-02-01
+ACC00215,Account 215,Logistics,DACH,Enterprise,Enterprise,250499,2023-11-01,2025-11-01
+ACC00216,Account 216,Retail,ANZ,Enterprise,Enterprise,213958,2024-02-01,2026-02-01
+ACC00217,Account 217,Logistics,APAC,Mid-Market,Growth,174364,2023-12-01,2024-12-01
+ACC00218,Account 218,Travel,DACH,Mid-Market,Growth,125225,2023-11-01,2025-11-01
+ACC00219,Account 219,Technology,UKI,SMB,Starter,25301,2024-03-01,2025-03-01
+ACC00220,Account 220,Retail,APAC,SMB,Starter,15849,2024-03-01,2026-03-01
+ACC00221,Account 221,Technology,ANZ,Enterprise,Enterprise,303481,2023-12-01,2025-12-01
+ACC00222,Account 222,Technology,ANZ,Mid-Market,Growth,78124,2024-02-01,2026-02-01
+ACC00223,Account 223,Retail,North America,Mid-Market,Growth,76237,2023-10-01,2025-10-01
+ACC00224,Account 224,Media,North America,Mid-Market,Growth,72630,2024-03-01,2026-03-01
+ACC00225,Account 225,Healthcare,India,SMB,Starter,36883,2023-12-01,2025-12-01
+ACC00226,Account 226,Retail,ANZ,Mid-Market,Growth,166828,2023-12-01,2024-12-01
+ACC00227,Account 227,Travel,UKI,Mid-Market,Growth,154031,2023-12-01,2024-12-01
+ACC00228,Account 228,Manufacturing,APAC,Enterprise,Enterprise,390743,2023-11-01,2024-11-01
+ACC00229,Account 229,Professional Services,DACH,SMB,Starter,26825,2024-02-01,2026-02-01
+ACC00230,Account 230,Healthcare,North America,Enterprise,Enterprise,316074,2024-02-01,2026-02-01
+ACC00231,Account 231,Media,India,SMB,Starter,28046,2024-03-01,2026-03-01
+ACC00232,Account 232,Professional Services,North America,SMB,Starter,40203,2024-01-01,2025-01-01
+ACC00233,Account 233,Healthcare,APAC,Mid-Market,Growth,177451,2023-12-01,2025-12-01
+ACC00234,Account 234,Logistics,UKI,Mid-Market,Growth,139143,2024-02-01,2025-02-01
+ACC00235,Account 235,Education,India,SMB,Starter,40158,2023-11-01,2024-11-01
+ACC00236,Account 236,Travel,UKI,SMB,Starter,42243,2023-10-01,2025-10-01
+ACC00237,Account 237,Logistics,ANZ,Enterprise,Enterprise,352655,2023-11-01,2024-11-01
+ACC00238,Account 238,Technology,North America,SMB,Starter,26338,2024-02-01,2026-02-01
+ACC00239,Account 239,Travel,DACH,Mid-Market,Growth,75729,2024-03-01,2025-03-01
+ACC00240,Account 240,Professional Services,India,Mid-Market,Growth,131922,2023-12-01,2024-12-01
+ACC00241,Account 241,Retail,India,Mid-Market,Growth,115873,2024-03-01,2025-03-01
+ACC00242,Account 242,Professional Services,ANZ,Mid-Market,Growth,72439,2024-03-01,2026-03-01
+ACC00243,Account 243,Financial Services,North America,Mid-Market,Growth,160432,2024-02-01,2025-02-01
+ACC00244,Account 244,Professional Services,DACH,Enterprise,Enterprise,227670,2024-03-01,2025-03-01
+ACC00245,Account 245,Education,India,SMB,Starter,40131,2024-02-01,2025-02-01
+ACC00246,Account 246,Travel,DACH,Mid-Market,Growth,115278,2024-03-01,2026-03-01
+ACC00247,Account 247,Education,DACH,SMB,Starter,30825,2023-11-01,2025-11-01
+ACC00248,Account 248,Financial Services,UKI,Mid-Market,Growth,59564,2024-03-01,2026-03-01
+ACC00249,Account 249,Media,UKI,Mid-Market,Growth,104476,2024-01-01,2026-01-01
+ACC00250,Account 250,Logistics,ANZ,SMB,Starter,34879,2023-11-01,2025-11-01
+ACC00251,Account 251,Education,UKI,SMB,Starter,39058,2023-12-01,2025-12-01
+ACC00252,Account 252,Healthcare,DACH,Mid-Market,Growth,117499,2024-02-01,2025-02-01
+ACC00253,Account 253,Technology,APAC,SMB,Starter,30285,2023-10-01,2024-10-01
+ACC00254,Account 254,Financial Services,DACH,Mid-Market,Growth,68465,2023-10-01,2025-10-01
+ACC00255,Account 255,Retail,DACH,Enterprise,Enterprise,618446,2023-11-01,2025-11-01
+ACC00256,Account 256,Media,India,Enterprise,Enterprise,379055,2023-11-01,2025-11-01
+ACC00257,Account 257,Media,North America,SMB,Starter,31343,2023-12-01,2024-12-01
+ACC00258,Account 258,Media,UKI,SMB,Starter,27885,2024-02-01,2025-02-01
+ACC00259,Account 259,Financial Services,North America,SMB,Starter,34115,2023-12-01,2025-12-01
+ACC00260,Account 260,Media,DACH,Enterprise,Enterprise,698934,2024-02-01,2025-02-01
+ACC00261,Account 261,Retail,DACH,Enterprise,Enterprise,292718,2024-01-01,2026-01-01
+ACC00262,Account 262,Financial Services,APAC,Enterprise,Enterprise,602842,2023-12-01,2024-12-01
+ACC00263,Account 263,Manufacturing,DACH,Mid-Market,Growth,124747,2024-02-01,2026-02-01
+ACC00264,Account 264,Travel,APAC,SMB,Starter,17409,2024-01-01,2026-01-01
+ACC00265,Account 265,Healthcare,APAC,Enterprise,Enterprise,304582,2023-11-01,2025-11-01
+ACC00266,Account 266,Travel,DACH,Mid-Market,Growth,154188,2023-12-01,2024-12-01
+ACC00267,Account 267,Travel,APAC,Mid-Market,Growth,76090,2024-02-01,2025-02-01
+ACC00268,Account 268,Retail,ANZ,Enterprise,Enterprise,227504,2023-10-01,2025-10-01
+ACC00269,Account 269,Travel,APAC,Mid-Market,Growth,155377,2024-01-01,2025-01-01
+ACC00270,Account 270,Retail,DACH,SMB,Starter,34865,2024-02-01,2026-02-01
+ACC00271,Account 271,Professional Services,ANZ,Enterprise,Enterprise,350395,2024-01-01,2026-01-01
+ACC00272,Account 272,Travel,India,SMB,Starter,34455,2023-12-01,2025-12-01
+ACC00273,Account 273,Technology,APAC,Mid-Market,Growth,142895,2024-02-01,2025-02-01
+ACC00274,Account 274,Healthcare,APAC,Enterprise,Enterprise,566251,2023-12-01,2025-12-01
+ACC00275,Account 275,Financial Services,India,SMB,Starter,41108,2024-03-01,2026-03-01
+ACC00276,Account 276,Professional Services,India,SMB,Starter,23700,2024-03-01,2025-03-01
+ACC00277,Account 277,Professional Services,APAC,SMB,Starter,38638,2023-10-01,2024-10-01
+ACC00278,Account 278,Professional Services,APAC,Mid-Market,Growth,118712,2024-03-01,2025-03-01
+ACC00279,Account 279,Manufacturing,North America,SMB,Starter,41924,2024-03-01,2025-03-01
+ACC00280,Account 280,Media,DACH,Mid-Market,Growth,75006,2023-10-01,2025-10-01
+ACC00281,Account 281,Manufacturing,APAC,Mid-Market,Growth,69848,2024-01-01,2026-01-01
+ACC00282,Account 282,Financial Services,ANZ,SMB,Starter,43600,2024-03-01,2025-03-01
+ACC00283,Account 283,Travel,DACH,Mid-Market,Growth,117984,2023-11-01,2025-11-01
+ACC00284,Account 284,Logistics,UKI,SMB,Starter,32218,2024-01-01,2026-01-01
+ACC00285,Account 285,Logistics,India,Mid-Market,Growth,169553,2024-02-01,2026-02-01
+ACC00286,Account 286,Media,UKI,Enterprise,Enterprise,457203,2024-02-01,2025-02-01
+ACC00287,Account 287,Technology,UKI,Enterprise,Enterprise,472559,2024-02-01,2026-02-01
+ACC00288,Account 288,Manufacturing,ANZ,SMB,Starter,40269,2023-12-01,2025-12-01
+ACC00289,Account 289,Logistics,India,Mid-Market,Growth,91555,2024-01-01,2026-01-01
+ACC00290,Account 290,Professional Services,ANZ,SMB,Starter,24430,2023-10-01,2025-10-01
+ACC00291,Account 291,Logistics,UKI,SMB,Starter,44352,2024-01-01,2026-01-01
+ACC00292,Account 292,Healthcare,DACH,Mid-Market,Growth,55513,2023-12-01,2025-12-01
+ACC00293,Account 293,Media,UKI,Mid-Market,Growth,135979,2023-12-01,2024-12-01
+ACC00294,Account 294,Technology,India,SMB,Starter,42130,2024-02-01,2026-02-01
+ACC00295,Account 295,Professional Services,ANZ,Mid-Market,Growth,67992,2023-10-01,2024-10-01
+ACC00296,Account 296,Travel,UKI,Mid-Market,Growth,81779,2023-10-01,2024-10-01
+ACC00297,Account 297,Education,DACH,Mid-Market,Growth,56880,2023-10-01,2025-10-01
+ACC00298,Account 298,Retail,North America,SMB,Starter,18294,2024-03-01,2025-03-01
+ACC00299,Account 299,Media,APAC,SMB,Starter,28333,2024-03-01,2025-03-01
+ACC00300,Account 300,Technology,ANZ,Enterprise,Enterprise,481198,2023-12-01,2024-12-01
+ACC00301,Account 301,Professional Services,UKI,Enterprise,Enterprise,273806,2024-03-01,2025-03-01
+ACC00302,Account 302,Education,UKI,Mid-Market,Growth,169698,2023-11-01,2024-11-01
+ACC00303,Account 303,Retail,ANZ,Enterprise,Enterprise,596278,2024-01-01,2026-01-01
+ACC00304,Account 304,Financial Services,DACH,Mid-Market,Growth,164916,2023-10-01,2024-10-01
+ACC00305,Account 305,Media,ANZ,SMB,Starter,25978,2023-12-01,2025-12-01
+ACC00306,Account 306,Travel,APAC,SMB,Starter,44139,2023-11-01,2025-11-01
+ACC00307,Account 307,Logistics,UKI,SMB,Starter,21318,2023-10-01,2025-10-01
+ACC00308,Account 308,Retail,North America,Enterprise,Enterprise,449761,2024-03-01,2026-03-01
+ACC00309,Account 309,Professional Services,ANZ,Mid-Market,Growth,153647,2023-12-01,2024-12-01
+ACC00310,Account 310,Education,APAC,Enterprise,Enterprise,364019,2024-02-01,2026-02-01
+ACC00311,Account 311,Healthcare,UKI,Enterprise,Enterprise,270951,2024-01-01,2025-01-01
+ACC00312,Account 312,Manufacturing,North America,SMB,Starter,30645,2023-12-01,2025-12-01
+ACC00313,Account 313,Media,DACH,SMB,Starter,27568,2023-11-01,2025-11-01
+ACC00314,Account 314,Professional Services,North America,SMB,Starter,24894,2024-02-01,2026-02-01
+ACC00315,Account 315,Manufacturing,North America,Mid-Market,Growth,135679,2023-12-01,2024-12-01
+ACC00316,Account 316,Retail,APAC,Enterprise,Enterprise,668002,2023-12-01,2025-12-01
+ACC00317,Account 317,Technology,DACH,Mid-Market,Growth,140477,2023-10-01,2024-10-01
+ACC00318,Account 318,Media,UKI,Mid-Market,Growth,78721,2023-11-01,2025-11-01
+ACC00319,Account 319,Logistics,APAC,SMB,Starter,39501,2024-02-01,2026-02-01
+ACC00320,Account 320,Manufacturing,UKI,Enterprise,Enterprise,743628,2024-03-01,2025-03-01
+ACC00321,Account 321,Travel,ANZ,Enterprise,Enterprise,731033,2024-01-01,2026-01-01
+ACC00322,Account 322,Healthcare,North America,Enterprise,Enterprise,261896,2024-02-01,2025-02-01
+ACC00323,Account 323,Retail,DACH,Enterprise,Enterprise,742728,2023-11-01,2025-11-01
+ACC00324,Account 324,Manufacturing,ANZ,Enterprise,Enterprise,301886,2024-03-01,2026-03-01
+ACC00325,Account 325,Media,North America,SMB,Starter,17979,2024-02-01,2026-02-01
+ACC00326,Account 326,Education,APAC,Mid-Market,Growth,67294,2024-02-01,2025-02-01
+ACC00327,Account 327,Technology,ANZ,SMB,Starter,33310,2024-01-01,2025-01-01
+ACC00328,Account 328,Financial Services,ANZ,Enterprise,Enterprise,595182,2023-12-01,2024-12-01
+ACC00329,Account 329,Education,DACH,Enterprise,Enterprise,256577,2023-10-01,2024-10-01
+ACC00330,Account 330,Healthcare,APAC,Enterprise,Enterprise,747451,2023-10-01,2024-10-01
+ACC00331,Account 331,Retail,UKI,Enterprise,Enterprise,481036,2024-01-01,2026-01-01
+ACC00332,Account 332,Media,APAC,SMB,Starter,27270,2024-01-01,2026-01-01
+ACC00333,Account 333,Travel,UKI,Mid-Market,Growth,60518,2024-03-01,2026-03-01
+ACC00334,Account 334,Travel,APAC,SMB,Starter,18887,2023-11-01,2024-11-01
+ACC00335,Account 335,Financial Services,DACH,Enterprise,Enterprise,413507,2023-10-01,2025-10-01
+ACC00336,Account 336,Education,UKI,Enterprise,Enterprise,624730,2024-02-01,2025-02-01
+ACC00337,Account 337,Retail,DACH,SMB,Starter,30093,2023-12-01,2024-12-01
+ACC00338,Account 338,Education,India,Enterprise,Enterprise,298326,2023-10-01,2024-10-01
+ACC00339,Account 339,Healthcare,North America,Mid-Market,Growth,81544,2023-11-01,2024-11-01
+ACC00340,Account 340,Financial Services,UKI,SMB,Starter,29628,2024-02-01,2025-02-01
+ACC00341,Account 341,Manufacturing,India,Mid-Market,Growth,102725,2024-01-01,2025-01-01
+ACC00342,Account 342,Retail,India,SMB,Starter,39719,2023-10-01,2025-10-01
+ACC00343,Account 343,Professional Services,DACH,SMB,Starter,22673,2024-03-01,2026-03-01
+ACC00344,Account 344,Retail,ANZ,SMB,Starter,22762,2023-12-01,2024-12-01
+ACC00345,Account 345,Technology,North America,SMB,Starter,28551,2023-12-01,2024-12-01
+ACC00346,Account 346,Media,North America,Enterprise,Enterprise,627952,2024-02-01,2026-02-01
+ACC00347,Account 347,Logistics,ANZ,Enterprise,Enterprise,579669,2024-02-01,2026-02-01
+ACC00348,Account 348,Technology,APAC,SMB,Starter,28377,2023-11-01,2024-11-01
+ACC00349,Account 349,Media,UKI,Mid-Market,Growth,148882,2024-02-01,2025-02-01
+ACC00350,Account 350,Retail,APAC,Mid-Market,Growth,89418,2024-03-01,2025-03-01
+ACC00351,Account 351,Travel,India,Enterprise,Enterprise,612723,2024-01-01,2025-01-01
+ACC00352,Account 352,Technology,UKI,Mid-Market,Growth,100910,2023-11-01,2025-11-01
+ACC00353,Account 353,Logistics,North America,Enterprise,Enterprise,262911,2024-01-01,2025-01-01
+ACC00354,Account 354,Education,ANZ,SMB,Starter,16688,2023-12-01,2024-12-01
+ACC00355,Account 355,Professional Services,ANZ,Enterprise,Enterprise,256319,2023-11-01,2024-11-01
+ACC00356,Account 356,Logistics,DACH,SMB,Starter,30708,2023-11-01,2024-11-01
+ACC00357,Account 357,Healthcare,ANZ,Enterprise,Enterprise,402096,2023-11-01,2025-11-01
+ACC00358,Account 358,Professional Services,ANZ,SMB,Starter,44964,2023-11-01,2024-11-01
+ACC00359,Account 359,Travel,DACH,SMB,Starter,27996,2023-11-01,2025-11-01
+ACC00360,Account 360,Travel,ANZ,Mid-Market,Growth,99894,2024-01-01,2026-01-01
+ACC00361,Account 361,Logistics,India,Mid-Market,Growth,90425,2023-12-01,2025-12-01
+ACC00362,Account 362,Media,DACH,SMB,Starter,30270,2023-10-01,2024-10-01
+ACC00363,Account 363,Education,North America,Mid-Market,Growth,98589,2023-12-01,2024-12-01
+ACC00364,Account 364,Financial Services,DACH,Mid-Market,Growth,147157,2023-11-01,2025-11-01
+ACC00365,Account 365,Manufacturing,DACH,Mid-Market,Growth,88691,2023-11-01,2024-11-01
+ACC00366,Account 366,Manufacturing,APAC,Mid-Market,Growth,99786,2024-02-01,2026-02-01
+ACC00367,Account 367,Media,APAC,SMB,Starter,23432,2024-01-01,2025-01-01
+ACC00368,Account 368,Retail,UKI,Mid-Market,Growth,146045,2023-12-01,2025-12-01
+ACC00369,Account 369,Financial Services,India,SMB,Starter,21030,2024-02-01,2025-02-01
+ACC00370,Account 370,Financial Services,North America,Enterprise,Enterprise,257941,2024-03-01,2026-03-01
+ACC00371,Account 371,Manufacturing,North America,Mid-Market,Growth,68021,2024-03-01,2025-03-01
+ACC00372,Account 372,Travel,APAC,Mid-Market,Growth,51198,2023-11-01,2025-11-01
+ACC00373,Account 373,Professional Services,APAC,Mid-Market,Growth,57923,2024-02-01,2026-02-01
+ACC00374,Account 374,Travel,India,Mid-Market,Growth,52061,2023-10-01,2025-10-01
+ACC00375,Account 375,Travel,ANZ,Mid-Market,Growth,51553,2023-10-01,2025-10-01
+ACC00376,Account 376,Financial Services,India,SMB,Starter,32555,2023-12-01,2025-12-01
+ACC00377,Account 377,Healthcare,North America,Mid-Market,Growth,155666,2023-11-01,2024-11-01
+ACC00378,Account 378,Professional Services,India,SMB,Starter,22896,2023-11-01,2025-11-01
+ACC00379,Account 379,Technology,APAC,SMB,Starter,41712,2023-12-01,2024-12-01
+ACC00380,Account 380,Media,India,Enterprise,Enterprise,571172,2024-01-01,2025-01-01
+ACC00381,Account 381,Manufacturing,DACH,Mid-Market,Growth,179791,2024-03-01,2025-03-01
+ACC00382,Account 382,Financial Services,North America,SMB,Starter,36421,2024-03-01,2026-03-01
+ACC00383,Account 383,Travel,APAC,SMB,Starter,27427,2024-01-01,2025-01-01
+ACC00384,Account 384,Retail,North America,Mid-Market,Growth,133459,2023-10-01,2025-10-01
+ACC00385,Account 385,Logistics,India,Mid-Market,Growth,160799,2024-01-01,2025-01-01
+ACC00386,Account 386,Financial Services,UKI,SMB,Starter,44320,2024-02-01,2025-02-01
+ACC00387,Account 387,Professional Services,APAC,SMB,Starter,44532,2024-03-01,2026-03-01
+ACC00388,Account 388,Technology,India,Mid-Market,Growth,56102,2023-10-01,2024-10-01
+ACC00389,Account 389,Financial Services,UKI,Enterprise,Enterprise,368066,2023-12-01,2024-12-01
+ACC00390,Account 390,Education,North America,Mid-Market,Growth,148599,2024-03-01,2026-03-01
+ACC00391,Account 391,Manufacturing,India,Enterprise,Enterprise,350341,2024-02-01,2026-02-01
+ACC00392,Account 392,Logistics,APAC,Mid-Market,Growth,138740,2024-02-01,2025-02-01
+ACC00393,Account 393,Healthcare,India,SMB,Starter,40903,2024-03-01,2026-03-01
+ACC00394,Account 394,Education,UKI,Mid-Market,Growth,57038,2023-10-01,2024-10-01
+ACC00395,Account 395,Professional Services,India,SMB,Starter,26160,2024-02-01,2026-02-01
+ACC00396,Account 396,Financial Services,ANZ,SMB,Starter,40347,2023-12-01,2025-12-01
+ACC00397,Account 397,Media,UKI,Mid-Market,Growth,152701,2024-01-01,2026-01-01
+ACC00398,Account 398,Education,UKI,Mid-Market,Growth,122487,2024-01-01,2026-01-01
+ACC00399,Account 399,Technology,UKI,Mid-Market,Growth,61232,2024-02-01,2025-02-01
+ACC00400,Account 400,Retail,APAC,Mid-Market,Growth,60752,2023-12-01,2024-12-01
+ACC00401,Account 401,Logistics,DACH,Mid-Market,Growth,146948,2024-01-01,2025-01-01
+ACC00402,Account 402,Technology,APAC,SMB,Starter,17998,2023-10-01,2025-10-01
+ACC00403,Account 403,Healthcare,UKI,Mid-Market,Growth,149791,2023-12-01,2024-12-01
+ACC00404,Account 404,Media,India,Enterprise,Enterprise,376494,2024-01-01,2026-01-01
+ACC00405,Account 405,Healthcare,DACH,Mid-Market,Growth,63538,2023-10-01,2024-10-01
+ACC00406,Account 406,Logistics,APAC,SMB,Starter,34560,2024-02-01,2025-02-01
+ACC00407,Account 407,Education,North America,SMB,Starter,24563,2024-01-01,2025-01-01
+ACC00408,Account 408,Retail,ANZ,Mid-Market,Growth,124967,2024-02-01,2026-02-01
+ACC00409,Account 409,Technology,DACH,Mid-Market,Growth,72216,2023-11-01,2025-11-01
+ACC00410,Account 410,Healthcare,UKI,SMB,Starter,31158,2023-11-01,2025-11-01
+ACC00411,Account 411,Technology,APAC,Enterprise,Enterprise,469366,2024-01-01,2025-01-01
+ACC00412,Account 412,Manufacturing,ANZ,Mid-Market,Growth,97333,2023-12-01,2025-12-01
+ACC00413,Account 413,Manufacturing,APAC,Mid-Market,Growth,127831,2024-02-01,2025-02-01
+ACC00414,Account 414,Financial Services,APAC,SMB,Starter,19439,2023-12-01,2025-12-01
+ACC00415,Account 415,Education,DACH,SMB,Starter,42577,2024-02-01,2026-02-01
+ACC00416,Account 416,Professional Services,UKI,SMB,Starter,25968,2024-01-01,2026-01-01
+ACC00417,Account 417,Manufacturing,APAC,SMB,Starter,25507,2024-02-01,2026-02-01
+ACC00418,Account 418,Logistics,DACH,Mid-Market,Growth,73283,2024-01-01,2026-01-01
+ACC00419,Account 419,Education,DACH,Enterprise,Enterprise,434200,2023-12-01,2025-12-01
+ACC00420,Account 420,Professional Services,UKI,SMB,Starter,26960,2023-10-01,2024-10-01
+ACC00421,Account 421,Financial Services,ANZ,Mid-Market,Growth,139353,2024-02-01,2026-02-01
+ACC00422,Account 422,Manufacturing,APAC,Mid-Market,Growth,173597,2024-03-01,2026-03-01
+ACC00423,Account 423,Healthcare,APAC,SMB,Starter,42239,2024-03-01,2026-03-01
+ACC00424,Account 424,Technology,UKI,Mid-Market,Growth,68242,2024-03-01,2026-03-01
+ACC00425,Account 425,Education,APAC,Mid-Market,Growth,136332,2023-11-01,2024-11-01
+ACC00426,Account 426,Media,India,SMB,Starter,29715,2024-02-01,2026-02-01
+ACC00427,Account 427,Education,India,Mid-Market,Growth,120040,2024-02-01,2025-02-01
+ACC00428,Account 428,Travel,India,SMB,Starter,40910,2023-12-01,2024-12-01
+ACC00429,Account 429,Logistics,UKI,Mid-Market,Growth,64335,2023-11-01,2024-11-01
+ACC00430,Account 430,Education,DACH,Mid-Market,Growth,123822,2024-03-01,2026-03-01
+ACC00431,Account 431,Healthcare,DACH,SMB,Starter,18471,2023-10-01,2024-10-01
+ACC00432,Account 432,Travel,India,Mid-Market,Growth,116935,2024-03-01,2025-03-01
+ACC00433,Account 433,Education,APAC,SMB,Starter,29607,2023-12-01,2024-12-01
+ACC00434,Account 434,Media,North America,Enterprise,Enterprise,541724,2023-10-01,2025-10-01
+ACC00435,Account 435,Healthcare,ANZ,Mid-Market,Growth,104522,2023-10-01,2024-10-01
+ACC00436,Account 436,Logistics,APAC,SMB,Starter,26414,2023-12-01,2024-12-01
+ACC00437,Account 437,Logistics,APAC,SMB,Starter,32075,2024-01-01,2025-01-01
+ACC00438,Account 438,Media,DACH,Enterprise,Enterprise,639450,2024-03-01,2025-03-01
+ACC00439,Account 439,Healthcare,North America,Mid-Market,Growth,89356,2023-10-01,2025-10-01
+ACC00440,Account 440,Retail,ANZ,Enterprise,Enterprise,294675,2024-03-01,2025-03-01
+ACC00441,Account 441,Travel,UKI,Mid-Market,Growth,117632,2023-11-01,2025-11-01
+ACC00442,Account 442,Manufacturing,APAC,Enterprise,Enterprise,627080,2024-01-01,2025-01-01
+ACC00443,Account 443,Education,APAC,Mid-Market,Growth,74430,2024-03-01,2025-03-01
+ACC00444,Account 444,Professional Services,APAC,Enterprise,Enterprise,386909,2024-01-01,2026-01-01
+ACC00445,Account 445,Manufacturing,UKI,Enterprise,Enterprise,184666,2024-03-01,2026-03-01
+ACC00446,Account 446,Healthcare,India,Mid-Market,Growth,148608,2024-03-01,2025-03-01
+ACC00447,Account 447,Retail,DACH,Mid-Market,Growth,154792,2024-02-01,2026-02-01
+ACC00448,Account 448,Healthcare,DACH,Mid-Market,Growth,75830,2024-01-01,2026-01-01
+ACC00449,Account 449,Logistics,India,Enterprise,Enterprise,733349,2024-03-01,2026-03-01
+ACC00450,Account 450,Professional Services,North America,Mid-Market,Growth,130125,2024-01-01,2026-01-01
+ACC00451,Account 451,Professional Services,UKI,Enterprise,Enterprise,549082,2024-01-01,2026-01-01
+ACC00452,Account 452,Professional Services,North America,Mid-Market,Growth,170413,2024-02-01,2025-02-01
+ACC00453,Account 453,Manufacturing,DACH,Mid-Market,Growth,91049,2023-10-01,2024-10-01
+ACC00454,Account 454,Retail,India,SMB,Starter,20998,2023-12-01,2025-12-01
+ACC00455,Account 455,Retail,India,SMB,Starter,28704,2024-02-01,2026-02-01
+ACC00456,Account 456,Media,ANZ,Mid-Market,Growth,105448,2023-11-01,2024-11-01
+ACC00457,Account 457,Media,DACH,Mid-Market,Growth,122733,2023-11-01,2024-11-01
+ACC00458,Account 458,Media,India,Mid-Market,Growth,74523,2023-12-01,2024-12-01
+ACC00459,Account 459,Financial Services,APAC,Mid-Market,Growth,163445,2023-12-01,2024-12-01
+ACC00460,Account 460,Travel,India,SMB,Starter,21393,2024-01-01,2026-01-01
+ACC00461,Account 461,Media,APAC,SMB,Starter,28406,2024-03-01,2026-03-01
+ACC00462,Account 462,Healthcare,India,SMB,Starter,31013,2023-11-01,2024-11-01
+ACC00463,Account 463,Technology,North America,SMB,Starter,41079,2023-11-01,2025-11-01
+ACC00464,Account 464,Technology,UKI,SMB,Starter,22367,2024-02-01,2026-02-01
+ACC00465,Account 465,Media,India,Mid-Market,Growth,124140,2024-03-01,2025-03-01
+ACC00466,Account 466,Technology,India,SMB,Starter,33766,2023-10-01,2025-10-01
+ACC00467,Account 467,Media,India,SMB,Starter,32761,2023-10-01,2024-10-01
+ACC00468,Account 468,Healthcare,ANZ,Mid-Market,Growth,179731,2024-01-01,2025-01-01
+ACC00469,Account 469,Media,DACH,Mid-Market,Growth,89021,2023-10-01,2025-10-01
+ACC00470,Account 470,Media,North America,SMB,Starter,43252,2023-10-01,2024-10-01
+ACC00471,Account 471,Professional Services,ANZ,Mid-Market,Growth,77509,2024-03-01,2026-03-01
+ACC00472,Account 472,Professional Services,ANZ,Mid-Market,Growth,162859,2024-03-01,2026-03-01
+ACC00473,Account 473,Retail,UKI,Mid-Market,Growth,71755,2024-02-01,2025-02-01
+ACC00474,Account 474,Professional Services,DACH,SMB,Starter,41392,2023-10-01,2025-10-01
+ACC00475,Account 475,Retail,DACH,Mid-Market,Growth,128231,2024-02-01,2026-02-01
+ACC00476,Account 476,Technology,India,Enterprise,Enterprise,483387,2024-02-01,2025-02-01
+ACC00477,Account 477,Financial Services,DACH,Mid-Market,Growth,67771,2024-01-01,2025-01-01
+ACC00478,Account 478,Manufacturing,UKI,Mid-Market,Growth,141937,2023-11-01,2025-11-01
+ACC00479,Account 479,Education,APAC,Enterprise,Enterprise,439579,2024-03-01,2025-03-01
+ACC00480,Account 480,Technology,ANZ,Mid-Market,Growth,125684,2024-03-01,2026-03-01
+ACC00481,Account 481,Healthcare,ANZ,Mid-Market,Growth,99174,2024-01-01,2025-01-01
+ACC00482,Account 482,Technology,ANZ,SMB,Starter,28200,2024-02-01,2026-02-01
+ACC00483,Account 483,Logistics,India,Mid-Market,Growth,109597,2024-01-01,2025-01-01
+ACC00484,Account 484,Healthcare,ANZ,Mid-Market,Growth,163889,2024-03-01,2026-03-01
+ACC00485,Account 485,Travel,APAC,Enterprise,Enterprise,555623,2023-10-01,2024-10-01
+ACC00486,Account 486,Media,DACH,Enterprise,Enterprise,630513,2023-11-01,2025-11-01
+ACC00487,Account 487,Logistics,India,Mid-Market,Growth,158572,2023-12-01,2024-12-01
+ACC00488,Account 488,Logistics,ANZ,Mid-Market,Growth,124205,2024-01-01,2025-01-01
+ACC00489,Account 489,Media,North America,Mid-Market,Growth,56021,2023-10-01,2024-10-01
+ACC00490,Account 490,Media,APAC,Mid-Market,Growth,171822,2023-11-01,2024-11-01
+ACC00491,Account 491,Retail,ANZ,SMB,Starter,29018,2023-11-01,2025-11-01
+ACC00492,Account 492,Healthcare,ANZ,SMB,Starter,20209,2023-12-01,2025-12-01
+ACC00493,Account 493,Logistics,ANZ,Mid-Market,Growth,82819,2023-10-01,2024-10-01
+ACC00494,Account 494,Technology,ANZ,SMB,Starter,16696,2024-01-01,2025-01-01
+ACC00495,Account 495,Healthcare,ANZ,SMB,Starter,29065,2024-03-01,2025-03-01
+ACC00496,Account 496,Media,North America,Mid-Market,Growth,50142,2023-11-01,2024-11-01
+ACC00497,Account 497,Travel,ANZ,Mid-Market,Growth,127814,2023-11-01,2025-11-01
+ACC00498,Account 498,Logistics,North America,SMB,Starter,15304,2023-10-01,2025-10-01
+ACC00499,Account 499,Media,North America,Mid-Market,Growth,140968,2023-11-01,2024-11-01
+ACC00500,Account 500,Healthcare,North America,SMB,Starter,27552,2023-10-01,2025-10-01
+ACC00501,Account 501,Retail,APAC,Mid-Market,Growth,98177,2023-12-01,2024-12-01
+ACC00502,Account 502,Retail,North America,SMB,Starter,36023,2024-03-01,2025-03-01
+ACC00503,Account 503,Retail,APAC,Mid-Market,Growth,129995,2024-03-01,2026-03-01
+ACC00504,Account 504,Retail,APAC,Mid-Market,Growth,144690,2023-11-01,2025-11-01
+ACC00505,Account 505,Healthcare,North America,SMB,Starter,43179,2023-11-01,2024-11-01
+ACC00506,Account 506,Professional Services,ANZ,Mid-Market,Growth,148624,2023-10-01,2025-10-01
+ACC00507,Account 507,Logistics,UKI,SMB,Starter,26519,2024-01-01,2025-01-01
+ACC00508,Account 508,Healthcare,UKI,Mid-Market,Growth,86302,2024-03-01,2026-03-01
+ACC00509,Account 509,Financial Services,ANZ,SMB,Starter,40525,2024-03-01,2026-03-01
+ACC00510,Account 510,Professional Services,India,Mid-Market,Growth,76928,2024-02-01,2025-02-01
+ACC00511,Account 511,Technology,ANZ,SMB,Starter,39505,2024-01-01,2025-01-01
+ACC00512,Account 512,Media,APAC,SMB,Starter,40683,2023-11-01,2024-11-01
+ACC00513,Account 513,Professional Services,North America,Mid-Market,Growth,81599,2024-01-01,2025-01-01
+ACC00514,Account 514,Logistics,UKI,Mid-Market,Growth,179352,2023-12-01,2025-12-01
+ACC00515,Account 515,Education,DACH,Mid-Market,Growth,162828,2024-02-01,2025-02-01
+ACC00516,Account 516,Financial Services,India,Enterprise,Enterprise,673894,2023-10-01,2024-10-01
+ACC00517,Account 517,Manufacturing,North America,SMB,Starter,15451,2023-12-01,2024-12-01
+ACC00518,Account 518,Travel,DACH,SMB,Starter,40863,2024-01-01,2026-01-01
+ACC00519,Account 519,Education,North America,SMB,Starter,28879,2024-03-01,2025-03-01
+ACC00520,Account 520,Technology,North America,Mid-Market,Growth,86368,2023-10-01,2024-10-01
+ACC00521,Account 521,Logistics,APAC,Enterprise,Enterprise,342924,2024-02-01,2025-02-01
+ACC00522,Account 522,Education,ANZ,SMB,Starter,25163,2024-03-01,2025-03-01
+ACC00523,Account 523,Healthcare,APAC,Mid-Market,Growth,57589,2023-11-01,2024-11-01
+ACC00524,Account 524,Professional Services,North America,Mid-Market,Growth,109424,2024-02-01,2026-02-01
+ACC00525,Account 525,Retail,North America,Mid-Market,Growth,137304,2024-03-01,2025-03-01
+ACC00526,Account 526,Financial Services,UKI,Mid-Market,Growth,142785,2023-11-01,2025-11-01
+ACC00527,Account 527,Travel,ANZ,Enterprise,Enterprise,543546,2024-02-01,2026-02-01
+ACC00528,Account 528,Retail,ANZ,SMB,Starter,20471,2023-12-01,2025-12-01
+ACC00529,Account 529,Financial Services,DACH,SMB,Starter,39016,2023-10-01,2025-10-01
+ACC00530,Account 530,Healthcare,DACH,SMB,Starter,23912,2024-02-01,2025-02-01
+ACC00531,Account 531,Travel,DACH,SMB,Starter,31257,2024-01-01,2025-01-01
+ACC00532,Account 532,Retail,DACH,Mid-Market,Growth,115484,2024-02-01,2025-02-01
+ACC00533,Account 533,Professional Services,ANZ,Mid-Market,Growth,83438,2023-10-01,2024-10-01
+ACC00534,Account 534,Travel,North America,SMB,Starter,22484,2024-03-01,2025-03-01
+ACC00535,Account 535,Manufacturing,North America,Mid-Market,Growth,162550,2023-10-01,2025-10-01
+ACC00536,Account 536,Retail,UKI,Mid-Market,Growth,97707,2024-01-01,2025-01-01
+ACC00537,Account 537,Education,UKI,SMB,Starter,33116,2024-03-01,2026-03-01
+ACC00538,Account 538,Logistics,DACH,Mid-Market,Growth,82540,2024-01-01,2025-01-01
+ACC00539,Account 539,Healthcare,India,Mid-Market,Growth,124912,2023-12-01,2024-12-01
+ACC00540,Account 540,Travel,North America,SMB,Starter,20876,2023-11-01,2025-11-01
+ACC00541,Account 541,Technology,DACH,Enterprise,Enterprise,252274,2024-01-01,2026-01-01
+ACC00542,Account 542,Media,North America,Enterprise,Enterprise,270581,2024-02-01,2026-02-01
+ACC00543,Account 543,Professional Services,DACH,SMB,Starter,21575,2023-12-01,2024-12-01
+ACC00544,Account 544,Professional Services,APAC,SMB,Starter,30201,2023-12-01,2024-12-01
+ACC00545,Account 545,Manufacturing,UKI,SMB,Starter,39001,2024-02-01,2025-02-01
+ACC00546,Account 546,Financial Services,UKI,Mid-Market,Growth,172211,2024-01-01,2026-01-01
+ACC00547,Account 547,Financial Services,ANZ,Enterprise,Enterprise,190060,2023-12-01,2025-12-01
+ACC00548,Account 548,Technology,North America,Mid-Market,Growth,161280,2024-03-01,2025-03-01
+ACC00549,Account 549,Education,APAC,Mid-Market,Growth,119443,2023-11-01,2024-11-01
+ACC00550,Account 550,Technology,North America,SMB,Starter,19665,2024-03-01,2025-03-01
+ACC00551,Account 551,Travel,APAC,Mid-Market,Growth,170753,2023-11-01,2025-11-01
+ACC00552,Account 552,Healthcare,India,Mid-Market,Growth,110091,2024-03-01,2025-03-01
+ACC00553,Account 553,Education,North America,SMB,Starter,31561,2023-11-01,2024-11-01
+ACC00554,Account 554,Retail,UKI,Mid-Market,Growth,107014,2024-03-01,2026-03-01
+ACC00555,Account 555,Education,ANZ,Enterprise,Enterprise,453668,2023-12-01,2025-12-01
+ACC00556,Account 556,Technology,UKI,Mid-Market,Growth,91688,2024-01-01,2025-01-01
+ACC00557,Account 557,Professional Services,North America,SMB,Starter,21642,2023-11-01,2024-11-01
+ACC00558,Account 558,Media,APAC,Enterprise,Enterprise,290790,2023-11-01,2025-11-01
+ACC00559,Account 559,Travel,DACH,Mid-Market,Growth,103282,2023-10-01,2024-10-01
+ACC00560,Account 560,Media,DACH,SMB,Starter,29808,2023-12-01,2024-12-01
+ACC00561,Account 561,Technology,ANZ,Mid-Market,Growth,61851,2023-11-01,2024-11-01
+ACC00562,Account 562,Retail,North America,Mid-Market,Growth,78183,2023-12-01,2024-12-01
+ACC00563,Account 563,Education,India,Mid-Market,Growth,176930,2023-12-01,2024-12-01
+ACC00564,Account 564,Technology,UKI,SMB,Starter,37189,2023-12-01,2024-12-01
+ACC00565,Account 565,Travel,ANZ,Enterprise,Enterprise,604035,2024-01-01,2025-01-01
+ACC00566,Account 566,Healthcare,UKI,Enterprise,Enterprise,279326,2024-01-01,2025-01-01
+ACC00567,Account 567,Manufacturing,UKI,SMB,Starter,15391,2023-10-01,2024-10-01
+ACC00568,Account 568,Healthcare,India,Enterprise,Enterprise,600040,2023-12-01,2025-12-01
+ACC00569,Account 569,Financial Services,North America,Mid-Market,Growth,170249,2023-10-01,2024-10-01
+ACC00570,Account 570,Healthcare,DACH,Enterprise,Enterprise,644971,2023-11-01,2024-11-01
+ACC00571,Account 571,Financial Services,UKI,Mid-Market,Growth,55596,2024-01-01,2026-01-01
+ACC00572,Account 572,Education,APAC,Mid-Market,Growth,157699,2024-03-01,2025-03-01
+ACC00573,Account 573,Education,UKI,Mid-Market,Growth,100165,2024-03-01,2026-03-01
+ACC00574,Account 574,Technology,DACH,Enterprise,Enterprise,405146,2023-11-01,2025-11-01
+ACC00575,Account 575,Financial Services,India,SMB,Starter,43948,2023-11-01,2024-11-01
+ACC00576,Account 576,Education,India,Enterprise,Enterprise,489440,2024-01-01,2026-01-01
+ACC00577,Account 577,Technology,APAC,Mid-Market,Growth,57992,2023-10-01,2024-10-01
+ACC00578,Account 578,Travel,UKI,Mid-Market,Growth,104949,2023-11-01,2024-11-01
+ACC00579,Account 579,Logistics,APAC,Mid-Market,Growth,179683,2024-01-01,2026-01-01
+ACC00580,Account 580,Travel,DACH,Mid-Market,Growth,95093,2024-02-01,2026-02-01
+ACC00581,Account 581,Financial Services,DACH,SMB,Starter,23861,2023-11-01,2024-11-01
+ACC00582,Account 582,Financial Services,APAC,Enterprise,Enterprise,210726,2023-12-01,2025-12-01
+ACC00583,Account 583,Healthcare,UKI,Enterprise,Enterprise,424068,2023-11-01,2024-11-01
+ACC00584,Account 584,Financial Services,UKI,SMB,Starter,23733,2024-02-01,2026-02-01
+ACC00585,Account 585,Retail,UKI,Enterprise,Enterprise,552039,2023-11-01,2025-11-01
+ACC00586,Account 586,Logistics,India,SMB,Starter,41417,2024-03-01,2025-03-01
+ACC00587,Account 587,Logistics,India,Mid-Market,Growth,142202,2024-03-01,2025-03-01
+ACC00588,Account 588,Media,India,Mid-Market,Growth,123807,2023-11-01,2025-11-01
+ACC00589,Account 589,Financial Services,North America,Mid-Market,Growth,73010,2024-01-01,2025-01-01
+ACC00590,Account 590,Manufacturing,North America,SMB,Starter,22622,2024-02-01,2026-02-01
+ACC00591,Account 591,Professional Services,UKI,Enterprise,Enterprise,180716,2023-12-01,2024-12-01
+ACC00592,Account 592,Retail,DACH,SMB,Starter,26165,2024-03-01,2025-03-01
+ACC00593,Account 593,Professional Services,ANZ,SMB,Starter,15718,2023-11-01,2024-11-01
+ACC00594,Account 594,Travel,DACH,Mid-Market,Growth,151497,2023-10-01,2024-10-01
+ACC00595,Account 595,Education,India,SMB,Starter,27241,2024-03-01,2025-03-01
+ACC00596,Account 596,Logistics,UKI,Enterprise,Enterprise,532909,2023-12-01,2024-12-01
+ACC00597,Account 597,Media,ANZ,Mid-Market,Growth,145990,2024-01-01,2026-01-01
+ACC00598,Account 598,Travel,ANZ,SMB,Starter,20708,2024-03-01,2026-03-01
+ACC00599,Account 599,Professional Services,UKI,SMB,Starter,22315,2024-03-01,2026-03-01
+ACC00600,Account 600,Technology,UKI,Enterprise,Enterprise,501727,2024-03-01,2025-03-01
+ACC00601,Account 601,Professional Services,APAC,SMB,Starter,38882,2023-10-01,2024-10-01
+ACC00602,Account 602,Logistics,India,Mid-Market,Growth,73865,2024-02-01,2025-02-01
+ACC00603,Account 603,Healthcare,APAC,Mid-Market,Growth,133839,2024-02-01,2025-02-01
+ACC00604,Account 604,Healthcare,UKI,Mid-Market,Growth,93406,2024-03-01,2026-03-01
+ACC00605,Account 605,Retail,ANZ,Mid-Market,Growth,178762,2023-12-01,2024-12-01
+ACC00606,Account 606,Logistics,APAC,Mid-Market,Growth,157696,2024-03-01,2025-03-01
+ACC00607,Account 607,Manufacturing,ANZ,Mid-Market,Growth,84761,2023-11-01,2024-11-01
+ACC00608,Account 608,Healthcare,ANZ,Mid-Market,Growth,95938,2023-12-01,2024-12-01
+ACC00609,Account 609,Media,ANZ,SMB,Starter,16577,2024-01-01,2026-01-01
+ACC00610,Account 610,Media,APAC,SMB,Starter,20450,2024-01-01,2026-01-01
+ACC00611,Account 611,Healthcare,APAC,Mid-Market,Growth,121568,2024-01-01,2025-01-01
+ACC00612,Account 612,Healthcare,North America,SMB,Starter,20329,2024-01-01,2026-01-01
+ACC00613,Account 613,Technology,North America,Mid-Market,Growth,52631,2023-12-01,2024-12-01
+ACC00614,Account 614,Education,UKI,Mid-Market,Growth,94801,2023-11-01,2024-11-01
+ACC00615,Account 615,Logistics,India,Mid-Market,Growth,121702,2023-10-01,2025-10-01
+ACC00616,Account 616,Education,ANZ,Mid-Market,Growth,142340,2023-10-01,2024-10-01
+ACC00617,Account 617,Retail,North America,Mid-Market,Growth,129602,2024-01-01,2025-01-01
+ACC00618,Account 618,Manufacturing,APAC,SMB,Starter,25849,2023-11-01,2025-11-01
+ACC00619,Account 619,Technology,UKI,Mid-Market,Growth,136585,2023-12-01,2024-12-01
+ACC00620,Account 620,Professional Services,India,SMB,Starter,16626,2024-01-01,2026-01-01
+ACC00621,Account 621,Logistics,North America,SMB,Starter,20032,2023-10-01,2025-10-01
+ACC00622,Account 622,Professional Services,APAC,SMB,Starter,17871,2023-12-01,2024-12-01
+ACC00623,Account 623,Manufacturing,UKI,SMB,Starter,18178,2023-10-01,2025-10-01
+ACC00624,Account 624,Healthcare,DACH,SMB,Starter,17684,2024-01-01,2026-01-01
+ACC00625,Account 625,Technology,North America,Mid-Market,Growth,111727,2024-01-01,2026-01-01
+ACC00626,Account 626,Education,DACH,Mid-Market,Growth,74232,2023-12-01,2024-12-01
+ACC00627,Account 627,Technology,APAC,SMB,Starter,29607,2023-10-01,2025-10-01
+ACC00628,Account 628,Technology,India,SMB,Starter,23631,2023-11-01,2024-11-01
+ACC00629,Account 629,Healthcare,North America,Mid-Market,Growth,69808,2024-03-01,2026-03-01
+ACC00630,Account 630,Education,India,Mid-Market,Growth,155929,2024-02-01,2025-02-01
+ACC00631,Account 631,Travel,APAC,Enterprise,Enterprise,243946,2024-01-01,2026-01-01
+ACC00632,Account 632,Media,DACH,Mid-Market,Growth,125066,2023-11-01,2024-11-01
+ACC00633,Account 633,Financial Services,India,SMB,Starter,27936,2024-03-01,2025-03-01
+ACC00634,Account 634,Retail,UKI,SMB,Starter,18941,2024-01-01,2025-01-01
+ACC00635,Account 635,Retail,North America,SMB,Starter,41491,2023-11-01,2025-11-01
+ACC00636,Account 636,Education,UKI,SMB,Starter,17567,2024-03-01,2025-03-01
+ACC00637,Account 637,Technology,DACH,SMB,Starter,42332,2024-02-01,2025-02-01
+ACC00638,Account 638,Travel,APAC,SMB,Starter,17851,2024-01-01,2026-01-01
+ACC00639,Account 639,Travel,APAC,Mid-Market,Growth,162279,2023-12-01,2024-12-01
+ACC00640,Account 640,Professional Services,India,SMB,Starter,40773,2024-03-01,2026-03-01
+ACC00641,Account 641,Retail,UKI,Enterprise,Enterprise,297984,2024-01-01,2025-01-01
+ACC00642,Account 642,Professional Services,North America,Mid-Market,Growth,171232,2023-10-01,2025-10-01
+ACC00643,Account 643,Logistics,APAC,Mid-Market,Growth,163701,2024-02-01,2026-02-01
+ACC00644,Account 644,Media,India,SMB,Starter,27551,2024-03-01,2026-03-01
+ACC00645,Account 645,Technology,APAC,Enterprise,Enterprise,219285,2023-11-01,2024-11-01
+ACC00646,Account 646,Education,North America,Mid-Market,Growth,131034,2024-02-01,2026-02-01
+ACC00647,Account 647,Manufacturing,North America,Enterprise,Enterprise,527596,2024-03-01,2026-03-01
+ACC00648,Account 648,Logistics,North America,Mid-Market,Growth,170695,2023-12-01,2025-12-01
+ACC00649,Account 649,Technology,DACH,Mid-Market,Growth,157136,2023-12-01,2025-12-01
+ACC00650,Account 650,Healthcare,UKI,Mid-Market,Growth,162490,2024-03-01,2025-03-01
+ACC00651,Account 651,Media,DACH,SMB,Starter,24846,2024-03-01,2026-03-01
+ACC00652,Account 652,Professional Services,ANZ,SMB,Starter,38881,2024-01-01,2025-01-01
+ACC00653,Account 653,Manufacturing,APAC,Enterprise,Enterprise,377064,2024-01-01,2026-01-01
+ACC00654,Account 654,Logistics,North America,Mid-Market,Growth,149548,2024-02-01,2025-02-01
+ACC00655,Account 655,Travel,APAC,Enterprise,Enterprise,248804,2023-12-01,2024-12-01
+ACC00656,Account 656,Professional Services,North America,Mid-Market,Growth,152303,2024-02-01,2025-02-01
+ACC00657,Account 657,Financial Services,UKI,SMB,Starter,21316,2023-11-01,2024-11-01
+ACC00658,Account 658,Logistics,ANZ,Mid-Market,Growth,109827,2023-10-01,2024-10-01
+ACC00659,Account 659,Media,India,SMB,Starter,23977,2023-12-01,2025-12-01
+ACC00660,Account 660,Financial Services,UKI,SMB,Starter,35821,2023-10-01,2025-10-01
+ACC00661,Account 661,Media,UKI,Mid-Market,Growth,114066,2024-02-01,2026-02-01
+ACC00662,Account 662,Logistics,DACH,SMB,Starter,34230,2024-02-01,2025-02-01
+ACC00663,Account 663,Healthcare,DACH,Enterprise,Enterprise,451224,2024-03-01,2025-03-01
+ACC00664,Account 664,Retail,India,SMB,Starter,27666,2023-10-01,2024-10-01
+ACC00665,Account 665,Manufacturing,ANZ,Mid-Market,Growth,162343,2023-11-01,2024-11-01
+ACC00666,Account 666,Education,India,Mid-Market,Growth,85269,2024-03-01,2025-03-01
+ACC00667,Account 667,Financial Services,APAC,Mid-Market,Growth,163328,2024-03-01,2025-03-01
+ACC00668,Account 668,Professional Services,North America,SMB,Starter,36213,2023-11-01,2024-11-01
+ACC00669,Account 669,Technology,ANZ,Mid-Market,Growth,83081,2024-02-01,2026-02-01
+ACC00670,Account 670,Logistics,APAC,Mid-Market,Growth,105549,2024-01-01,2026-01-01
+ACC00671,Account 671,Technology,ANZ,Mid-Market,Growth,78601,2024-01-01,2026-01-01
+ACC00672,Account 672,Travel,ANZ,Enterprise,Enterprise,287282,2023-10-01,2025-10-01
+ACC00673,Account 673,Healthcare,APAC,Enterprise,Enterprise,476408,2023-12-01,2024-12-01
+ACC00674,Account 674,Logistics,DACH,SMB,Starter,26019,2023-12-01,2025-12-01
+ACC00675,Account 675,Technology,UKI,Mid-Market,Growth,135998,2024-03-01,2025-03-01
+ACC00676,Account 676,Financial Services,India,Mid-Market,Growth,117802,2023-11-01,2025-11-01
+ACC00677,Account 677,Retail,ANZ,Mid-Market,Growth,136577,2023-12-01,2024-12-01
+ACC00678,Account 678,Technology,APAC,Enterprise,Enterprise,701533,2023-12-01,2025-12-01
+ACC00679,Account 679,Financial Services,India,SMB,Starter,27722,2024-03-01,2025-03-01
+ACC00680,Account 680,Manufacturing,ANZ,SMB,Starter,26244,2024-03-01,2026-03-01
+ACC00681,Account 681,Logistics,India,Mid-Market,Growth,168820,2024-03-01,2026-03-01
+ACC00682,Account 682,Travel,UKI,SMB,Starter,42702,2023-11-01,2025-11-01
+ACC00683,Account 683,Retail,ANZ,SMB,Starter,18198,2024-01-01,2026-01-01
+ACC00684,Account 684,Retail,ANZ,SMB,Starter,38762,2024-02-01,2026-02-01
+ACC00685,Account 685,Manufacturing,DACH,SMB,Starter,36444,2023-10-01,2024-10-01
+ACC00686,Account 686,Education,DACH,Mid-Market,Growth,147545,2023-12-01,2025-12-01
+ACC00687,Account 687,Technology,APAC,Mid-Market,Growth,84152,2024-02-01,2025-02-01
+ACC00688,Account 688,Professional Services,India,SMB,Starter,30418,2023-10-01,2024-10-01
+ACC00689,Account 689,Travel,North America,SMB,Starter,30473,2023-11-01,2025-11-01
+ACC00690,Account 690,Education,North America,Mid-Market,Growth,119446,2023-12-01,2024-12-01
+ACC00691,Account 691,Logistics,APAC,Mid-Market,Growth,68004,2023-11-01,2025-11-01
+ACC00692,Account 692,Retail,North America,Mid-Market,Growth,68772,2023-12-01,2025-12-01
+ACC00693,Account 693,Retail,DACH,Mid-Market,Growth,93598,2024-03-01,2025-03-01
+ACC00694,Account 694,Technology,UKI,Enterprise,Enterprise,184942,2024-01-01,2025-01-01
+ACC00695,Account 695,Media,North America,Mid-Market,Growth,125534,2023-11-01,2024-11-01
+ACC00696,Account 696,Education,APAC,Mid-Market,Growth,130541,2024-01-01,2026-01-01
+ACC00697,Account 697,Education,North America,Mid-Market,Growth,176527,2024-01-01,2025-01-01
+ACC00698,Account 698,Logistics,North America,Enterprise,Enterprise,739711,2023-11-01,2025-11-01
+ACC00699,Account 699,Manufacturing,North America,Mid-Market,Growth,149201,2024-02-01,2025-02-01
+ACC00700,Account 700,Manufacturing,UKI,Mid-Market,Growth,132141,2024-03-01,2026-03-01

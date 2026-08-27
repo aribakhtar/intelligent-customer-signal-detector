@@ -1,0 +1,91 @@
+customer_id,date,channel,text
+C001,2026-07-01,support,"The workflow is acceptable, but there are a few issues."
+C001,2026-07-31,support,"If these issues continue, we may need to evaluate alternatives."
+C001,2026-08-30,support,We are seriously considering cancelling and moving to another provider.
+C002,2026-07-01,support,We are still evaluating the latest changes.
+C002,2026-07-31,support,This issue is becoming frustrating and we need a resolution.
+C002,2026-08-30,support,We have raised this problem several times and it is still unresolved.
+C003,2026-07-01,support,We have a couple of questions about the recent update.
+C003,2026-07-31,support,The platform has been working well for our team.
+C003,2026-08-30,support,"The support interaction was frustrating, but the underlying product is performing well."
+C004,2026-07-01,support,We are still evaluating the latest changes.
+C004,2026-07-31,support,Our team is increasingly unhappy with the product.
+C004,2026-08-30,support,This issue is becoming frustrating and we need a resolution.
+C005,2026-07-01,support,We are still evaluating the latest changes.
+C005,2026-07-31,support,We have a couple of questions about the recent update.
+C005,2026-08-30,support,The recent experience has been disappointing.
+C006,2026-07-01,support,We have a couple of questions about the recent update.
+C006,2026-07-31,support,"If these issues continue, we may need to evaluate alternatives."
+C006,2026-08-30,support,We are seriously considering cancelling and moving to another provider.
+C007,2026-07-01,support,Usage is steady and the team is satisfied.
+C007,2026-07-31,support,Very happy with the latest release.
+C007,2026-08-30,support,"The support interaction was frustrating, but the underlying product is performing well."
+C008,2026-07-01,support,"The workflow is acceptable, but there are a few issues."
+C008,2026-07-31,support,This issue is becoming frustrating and we need a resolution.
+C008,2026-08-30,support,This issue is becoming frustrating and we need a resolution.
+C009,2026-07-01,support,Support resolved our question quickly.
+C009,2026-07-31,support,"The product is generally fine, although some improvements would help."
+C009,2026-08-30,support,Our team is increasingly unhappy with the product.
+C010,2026-07-01,support,We have a couple of questions about the recent update.
+C010,2026-07-31,support,"The product is generally fine, although some improvements would help."
+C010,2026-08-30,support,Support resolved our question quickly.
+C011,2026-07-01,support,"The product is generally fine, although some improvements would help."
+C011,2026-07-31,support,The recent experience has been disappointing.
+C011,2026-08-30,support,This issue is becoming frustrating and we need a resolution.
+C012,2026-07-01,support,We have a couple of questions about the recent update.
+C012,2026-07-31,support,"The product is generally fine, although some improvements would help."
+C012,2026-08-30,support,The recent experience has been disappointing.
+C013,2026-07-01,support,"The workflow is acceptable, but there are a few issues."
+C013,2026-07-31,support,The recent experience has been disappointing.
+C013,2026-08-30,support,This issue is becoming frustrating and we need a resolution.
+C014,2026-07-01,support,The platform has been working well for our team.
+C014,2026-07-31,support,"The product is generally fine, although some improvements would help."
+C014,2026-08-30,support,"The product is generally fine, although some improvements would help."
+C015,2026-07-01,support,Usage is steady and the team is satisfied.
+C015,2026-07-31,support,"The workflow is acceptable, but there are a few issues."
+C015,2026-08-30,support,We have raised this problem several times and it is still unresolved.
+C016,2026-07-01,support,We are still evaluating the latest changes.
+C016,2026-07-31,support,We are still evaluating the latest changes.
+C016,2026-08-30,support,We have raised this problem several times and it is still unresolved.
+C017,2026-07-01,support,"The workflow is acceptable, but there are a few issues."
+C017,2026-07-31,support,"The product is generally fine, although some improvements would help."
+C017,2026-08-30,support,"The support interaction was frustrating, but the underlying product is performing well."
+C018,2026-07-01,support,We are still evaluating the latest changes.
+C018,2026-07-31,support,The recent experience has been disappointing.
+C018,2026-08-30,support,Our team is increasingly unhappy with the product.
+C019,2026-07-01,support,We have a couple of questions about the recent update.
+C019,2026-07-31,support,"If these issues continue, we may need to evaluate alternatives."
+C019,2026-08-30,support,We are seriously considering cancelling and moving to another provider.
+C020,2026-07-01,support,Usage is steady and the team is satisfied.
+C020,2026-07-31,support,The platform has been working well for our team.
+C020,2026-08-30,support,Support resolved our question quickly.
+C021,2026-07-01,support,We are still evaluating the latest changes.
+C021,2026-07-31,support,Our team is increasingly unhappy with the product.
+C021,2026-08-30,support,Our team is increasingly unhappy with the product.
+C022,2026-07-01,support,Usage is steady and the team is satisfied.
+C022,2026-07-31,support,"The workflow is acceptable, but there are a few issues."
+C022,2026-08-30,support,We have raised this problem several times and it is still unresolved.
+C023,2026-07-01,support,Support resolved our question quickly.
+C023,2026-07-31,support,Very happy with the latest release.
+C023,2026-08-30,support,Very happy with the latest release.
+C024,2026-07-01,support,We are still evaluating the latest changes.
+C024,2026-07-31,support,Our team is increasingly unhappy with the product.
+C024,2026-08-30,support,The recent experience has been disappointing.
+C025,2026-07-01,support,"The workflow is acceptable, but there are a few issues."
+C025,2026-07-31,support,We have a couple of questions about the recent update.
+C025,2026-08-30,support,This issue is becoming frustrating and we need a resolution.
+C026,2026-07-01,support,Support resolved our question quickly.
+C026,2026-07-31,support,We are still evaluating the latest changes.
+C026,2026-08-30,support,We are still evaluating the latest changes.
+C027,2026-07-01,support,We are still evaluating the latest changes.
+C027,2026-07-31,support,The recent experience has been disappointing.
+C027,2026-08-30,support,This issue is becoming frustrating and we need a resolution.
+C028,2026-07-01,support,"The workflow is acceptable, but there are a few issues."
+C028,2026-07-31,support,The recent experience has been disappointing.
+C028,2026-08-30,support,We have raised this problem several times and it is still unresolved.
+C029,2026-07-01,support,"The product is generally fine, although some improvements would help."
+C029,2026-07-31,support,We are still evaluating the latest changes.
+C029,2026-08-30,support,The recent experience has been disappointing.
+C030,2026-07-01,support,Support resolved our question quickly.
+C030,2026-07-31,support,Support resolved our question quickly.
+C030,2026-08-30,support,"The workflow is acceptable, but there are a few issues."
