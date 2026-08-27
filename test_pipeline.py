@@ -111,9 +111,12 @@ def test_precedence_beats_filename_order():
     # would overwrite the real aggregate.
     cust, _, _ = pl.consolidate([tix, panel])
     row = cust.set_index("customer_id").loc["A"]
-    assert row.tickets_last_30d == 2, f"tickets table must win, got {row.tickets_last_30d}"
-    assert row.open_p1_tickets == 1
-    assert row.logins_last_30d == 50, "panel still supplies fields tickets do not"
+    # Per-field, not per-source: the snapshot rollup owns volume, the event
+    # export owns per-ticket detail. Filenames must not decide either way.
+    assert row.tickets_last_30d == 99, "snapshot rollup owns ticket volume"
+    assert row.open_p1_tickets == 1, "only the event export knows severity"
+    assert row.tickets_reopened_30d == 1, "only the event export knows reopens"
+    assert row.logins_last_30d == 50
 
 
 def test_only_recent_messages_reach_the_model():

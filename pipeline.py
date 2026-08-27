@@ -94,8 +94,26 @@ MAX_MSGS_PER_CUSTOMER = 6
 # When two feeds write the same field, the higher number wins regardless of the
 # order files happen to be read in. Without this, resolution falls to whichever
 # filename sorts last - so renaming a file silently changes the score.
-PRECEDENCE = {"tickets": 3, "monthly_panel": 2, "accounts_wide": 1,
-              "billing": 1, "unknown": 1}
+#
+# Precedence is per FIELD, not per source kind, because no single source is best
+# at everything. A monthly snapshot carries the system-of-record rollup, so it
+# owns volume counts; a raw event export is often a filtered or partial extract
+# and undercounts them - on this dataset the two disagreed 8x on tickets/month.
+# But the event export is the only source with per-ticket detail, so it owns
+# reopens and severity. Getting this backwards fed the support signal a
+# near-empty count and cost real accuracy.
+PRECEDENCE = {
+    "monthly_panel": {"": 2, "tickets_last_30d": 4, "tickets_prev_30d": 4},
+    "tickets":       {"": 3},
+    "accounts_wide": {"": 1},
+    "billing":       {"": 1},
+    "unknown":       {"": 1},
+}
+
+
+def _priority(kind: str, field: str) -> int:
+    table = PRECEDENCE.get(kind, {"": 1})
+    return table.get(field, table[""])
 
 # The column that dates each row, by file kind. Used to rewind a feed to a past
 # date. `contract_end_date` is deliberately absent: it is set at signing and is
@@ -306,16 +324,17 @@ def consolidate(specs: list[dict], as_of=None) -> tuple[pd.DataFrame, pd.DataFra
     texts: list[dict] = []
     provenance: dict[str, set] = {}
 
-    def absorb(cid: str, rec: dict, source: str, priority: int = 1):
+    def absorb(cid: str, rec: dict, source: str, kind: str = "unknown"):
         cid = str(cid)
         p = profiles.setdefault(cid, {"customer_id": cid})
         held = claims.setdefault(cid, {})
         for k, v in rec.items():
             if k == "customer_id" or pd.isna(v):
                 continue
-            if priority >= held.get(k, 0):
+            prio = _priority(kind, k)
+            if prio >= held.get(k, 0):
                 p[k] = v
-                held[k] = priority
+                held[k] = prio
         provenance.setdefault(cid, set()).add(source)
 
     for spec in specs:
@@ -331,7 +350,6 @@ def consolidate(specs: list[dict], as_of=None) -> tuple[pd.DataFrame, pd.DataFra
         df = _rewind(df, kind, as_of, src)
         if df.empty:
             continue
-        prio = PRECEDENCE.get(kind, 1)
 
         # Column mappings are for shapes with no dedicated handler. A per-row
         # event table needs aggregating, and letting a column map turn it into a
@@ -379,7 +397,7 @@ def consolidate(specs: list[dict], as_of=None) -> tuple[pd.DataFrame, pd.DataFra
                                    {"critical", "p1", "urgent"}))):
                 agg[name] = mask.fillna(False).astype(int)
             for cid, g in agg.groupby("customer_id"):
-                absorb(cid, {k: int(g[k].sum()) for k in agg.columns[1:]}, src, prio)
+                absorb(cid, {k: int(g[k].sum()) for k in agg.columns[1:]}, src, kind)
 
         elif kind == "monthly_panel":
             import adapt
@@ -387,18 +405,18 @@ def consolidate(specs: list[dict], as_of=None) -> tuple[pd.DataFrame, pd.DataFra
                                        "support_tickets_opened": "support_tickets"})
             wide, inter = adapt.adapt(panel)
             for r in wide.to_dict("records"):
-                absorb(r["customer_id"], r, src, prio)
+                absorb(r["customer_id"], r, src, kind)
             # adapt() computes current-vs-baseline deltas; anything else the panel
             # carries is still useful at its latest observed value.
             latest = panel.sort_values("month").groupby("customer_id").last()
             extra = [c for c in latest.columns if c in CANONICAL]
             for cid, row in latest[extra].iterrows():
-                absorb(cid, row.to_dict(), src, prio)
+                absorb(cid, row.to_dict(), src, kind)
             texts.extend(inter.to_dict("records"))
 
         else:                                          # accounts_wide / billing
             for r in df.to_dict("records"):
-                absorb(r["customer_id"], r, src, prio)
+                absorb(r["customer_id"], r, src, kind)
 
     cust = pd.DataFrame(list(profiles.values()))
     if texts:
