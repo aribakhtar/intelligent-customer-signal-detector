@@ -95,6 +95,40 @@ def test_agent_text_is_excluded():
         "agent replies would pollute the sentiment read"
 
 
+def test_precedence_beats_filename_order():
+    """A dedicated aggregation must win over a snapshot, whatever the filenames."""
+    panel = pl.classify(_write("zz_panel.csv", pd.DataFrame({
+        "customer_id": ["A"] * 4,
+        "month": ["2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30"],
+        "support_tickets": [1, 1, 1, 99], "monthly_usage_pct": [80, 70, 60, 50],
+        "csat_score": [8, 7, 6, 5]})))
+    tix = pl.classify(_write("aa_tickets.csv", pd.DataFrame({
+        "customer_id": ["A", "A"], "created_at": ["2025-04-20", "2025-04-25"],
+        "resolved_at": [None, None], "severity": ["low", "critical"],
+        "reopened": [False, True]})))
+
+    # tickets sorts FIRST alphabetically, so without precedence the panel's 99
+    # would overwrite the real aggregate.
+    cust, _, _ = pl.consolidate([tix, panel])
+    row = cust.set_index("customer_id").loc["A"]
+    assert row.tickets_last_30d == 2, f"tickets table must win, got {row.tickets_last_30d}"
+    assert row.open_p1_tickets == 1
+    assert row.logins_last_30d == 50, "panel still supplies fields tickets do not"
+
+
+def test_only_recent_messages_reach_the_model():
+    """Sentiment is about how they sound now, not 18 months ago."""
+    n = pl.MAX_MSGS_PER_CUSTOMER
+    dates = [f"2025-{m:02d}-01" for m in range(1, 13)]
+    spec = pl.classify(_write("many.csv", pd.DataFrame({
+        "customer_id": ["A"] * 12, "date": dates, "channel": ["chat"] * 12,
+        "text": [f"message {i}" for i in range(12)]})))
+    _, inter, _ = pl.consolidate([spec])
+    assert len(inter) == n, f"expected {n} most recent, got {len(inter)}"
+    assert inter.date.min() == dates[12 - n], "must keep the newest, not the oldest"
+    assert "message 11" in set(inter.text)
+
+
 def test_buckets_are_ordered_and_sized():
     shares = [b["share"] for b in pl.BUCKETS]
     assert shares == sorted(shares), "bucket shares must be cumulative and ascending"

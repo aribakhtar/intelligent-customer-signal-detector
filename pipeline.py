@@ -86,6 +86,17 @@ CANONICAL = [
 ]
 TEXT_FIELDS = ["customer_id", "date", "channel", "text"]
 
+# How many of a customer's most recent messages reach the model. Sentiment is a
+# question about how they sound NOW; feeding 18 months of history lets a stale
+# complaint carry the same weight as last week's, and dilutes the recent signal.
+MAX_MSGS_PER_CUSTOMER = 6
+
+# When two feeds write the same field, the higher number wins regardless of the
+# order files happen to be read in. Without this, resolution falls to whichever
+# filename sorts last - so renaming a file silently changes the score.
+PRECEDENCE = {"tickets": 3, "monthly_panel": 2, "accounts_wide": 1,
+              "billing": 1, "unknown": 1}
+
 # The column that dates each row, by file kind. Used to rewind a feed to a past
 # date. `contract_end_date` is deliberately absent: it is set at signing and is
 # therefore known in advance, not a record timestamp.
@@ -126,6 +137,11 @@ FINGERPRINTS = [
     ("interactions", {"text"}),
     ("monthly_panel", {"month"}),
     ("monthly_panel", {"snapshot_date"}),
+    # Ticket exports are one row per ticket and need aggregating, so they must
+    # be recognised here rather than left to the LLM - a mapped ticket file
+    # would otherwise be absorbed as one profile per row.
+    ("tickets", {"created_at"}),
+    ("tickets", {"ticket_id"}),
 ]
 ID_COLUMNS = ("customer_id", "account_id")
 
@@ -286,15 +302,21 @@ def consolidate(specs: list[dict], as_of=None) -> tuple[pd.DataFrame, pd.DataFra
     describe the present.
     """
     profiles: dict[str, dict] = {}
+    claims: dict[str, dict[str, int]] = {}     # customer -> field -> winning priority
     texts: list[dict] = []
     provenance: dict[str, set] = {}
 
-    def absorb(cid: str, rec: dict, source: str):
-        p = profiles.setdefault(str(cid), {"customer_id": str(cid)})
+    def absorb(cid: str, rec: dict, source: str, priority: int = 1):
+        cid = str(cid)
+        p = profiles.setdefault(cid, {"customer_id": cid})
+        held = claims.setdefault(cid, {})
         for k, v in rec.items():
-            if k != "customer_id" and pd.notna(v):
+            if k == "customer_id" or pd.isna(v):
+                continue
+            if priority >= held.get(k, 0):
                 p[k] = v
-        provenance.setdefault(str(cid), set()).add(source)
+                held[k] = priority
+        provenance.setdefault(cid, set()).add(source)
 
     for spec in specs:
         path, kind = Path(spec["path"]), spec["kind"]
@@ -309,6 +331,7 @@ def consolidate(specs: list[dict], as_of=None) -> tuple[pd.DataFrame, pd.DataFra
         df = _rewind(df, kind, as_of, src)
         if df.empty:
             continue
+        prio = PRECEDENCE.get(kind, 1)
 
         # Column mappings are for shapes with no dedicated handler. A per-row
         # event table needs aggregating, and letting a column map turn it into a
@@ -356,7 +379,7 @@ def consolidate(specs: list[dict], as_of=None) -> tuple[pd.DataFrame, pd.DataFra
                                    {"critical", "p1", "urgent"}))):
                 agg[name] = mask.fillna(False).astype(int)
             for cid, g in agg.groupby("customer_id"):
-                absorb(cid, {k: int(g[k].sum()) for k in agg.columns[1:]}, src)
+                absorb(cid, {k: int(g[k].sum()) for k in agg.columns[1:]}, src, prio)
 
         elif kind == "monthly_panel":
             import adapt
@@ -364,22 +387,27 @@ def consolidate(specs: list[dict], as_of=None) -> tuple[pd.DataFrame, pd.DataFra
                                        "support_tickets_opened": "support_tickets"})
             wide, inter = adapt.adapt(panel)
             for r in wide.to_dict("records"):
-                absorb(r["customer_id"], r, src)
+                absorb(r["customer_id"], r, src, prio)
             # adapt() computes current-vs-baseline deltas; anything else the panel
             # carries is still useful at its latest observed value.
             latest = panel.sort_values("month").groupby("customer_id").last()
             extra = [c for c in latest.columns if c in CANONICAL]
             for cid, row in latest[extra].iterrows():
-                absorb(cid, row.to_dict(), src)
+                absorb(cid, row.to_dict(), src, prio)
             texts.extend(inter.to_dict("records"))
 
         else:                                          # accounts_wide / billing
             for r in df.to_dict("records"):
-                absorb(r["customer_id"], r, src)
+                absorb(r["customer_id"], r, src, prio)
 
     cust = pd.DataFrame(list(profiles.values()))
-    inter = pd.DataFrame(texts, columns=TEXT_FIELDS) if texts else \
-        pd.DataFrame(columns=TEXT_FIELDS)
+    if texts:
+        inter = (pd.DataFrame(texts, columns=TEXT_FIELDS)
+                 .sort_values("date")
+                 .groupby("customer_id", group_keys=False)
+                 .tail(MAX_MSGS_PER_CUSTOMER))
+    else:
+        inter = pd.DataFrame(columns=TEXT_FIELDS)
     return cust, inter, {k: sorted(v) for k, v in provenance.items()}
 
 

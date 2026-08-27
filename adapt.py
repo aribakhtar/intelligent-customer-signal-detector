@@ -30,7 +30,11 @@ GROUND_TRUTH = ["ground_truth_risk", "scenario_type", "scenario_description",
                 "sentiment", "churn_intent"]
 
 
-def adapt(src: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+BASELINE_MONTHS = 3
+
+
+def adapt(src: pd.DataFrame, baseline_months: int = BASELINE_MONTHS
+          ) -> tuple[pd.DataFrame, pd.DataFrame]:
     src = src.copy()
     src["month"] = pd.to_datetime(src["month"])
     src = src.sort_values(["customer_id", "month"])
@@ -48,12 +52,15 @@ def adapt(src: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         if "monthly_revenue_usd" in g:
             rec["arr_usd"] = float(last.monthly_revenue_usd) * 12
 
-        # Baseline is the FIRST observed month, not the immediately preceding
-        # one. These accounts decay over the whole window (95 -> 81 -> 69), and
-        # a month-over-month delta reads each step as mild while the cumulative
-        # trajectory is the actual signal. Falls back to prev-month for a
-        # two-point history.
-        base = g.iloc[0] if len(g) > 2 else prev
+        # Baseline is a FIXED LOOKBACK, not the immediately preceding month and
+        # not the first row. Month-over-month reads a sustained slide as three
+        # mild steps; the first observed row is worse still on a long panel -
+        # on 18 months of history it compares June against the previous January,
+        # where ordinary drift and seasonality swamp the recent signal. Falls
+        # back to the earliest row when history is shorter than the lookback.
+        cutoff = last.month - pd.DateOffset(months=baseline_months)
+        earlier = g[g.month <= cutoff]
+        base = earlier.iloc[-1] if len(earlier) else (g.iloc[0] if len(g) > 2 else prev)
         if "monthly_usage_pct" in g and base is not None:
             rec["logins_last_30d"] = float(last.monthly_usage_pct)
             rec["logins_prev_30d"] = float(base.monthly_usage_pct)
@@ -62,7 +69,8 @@ def adapt(src: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
             rec["tickets_prev_30d"] = float(base.support_tickets)
         if "csat_score" in g:
             rec["csat_current"] = round(float(last.csat_score) / 2, 1)   # 1-10 -> 1-5
-            rec["csat_prev_quarter"] = round(float(g.iloc[0].csat_score) / 2, 1)
+            prior = base if base is not None else g.iloc[0]
+            rec["csat_prev_quarter"] = round(float(prior.csat_score) / 2, 1)
 
         if "billing_status" in g:
             status = g.billing_status.astype(str)
