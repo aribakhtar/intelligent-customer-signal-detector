@@ -175,7 +175,7 @@ Roughly in the order I would build them.
   properly — the extraction layer would not change, and the score stays as auditable as it is now.
 - **Concurrent scoring.** L3 calls the model serially, one customer at a time. Batching with a
   thread pool (as `validation/eval_llm.py` already does) would take a 700-account run from minutes
-  to seconds and make full-book scoring practical in the UI.
+  to seconds and make scoring every customer practical in the UI.
 - **A feedback loop.** Record what the CSM actually did after each flag and whether the account
   renewed, then feed that back — both to recalibrate the weights and to stop surfacing patterns the
   team has learned to ignore.

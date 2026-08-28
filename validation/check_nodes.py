@@ -5,7 +5,7 @@
 The label guard in L1 quarantines outcomes.csv, so nothing in it reached the
 scorer. That makes it a clean grading set here.
 
-This is not the point-in-time backtest (see backtest.py) - it scores the book as
+This is not the point-in-time backtest (see backtest.py) - it scores all customers as
 it stands using all available history, which is what a production run does. Read
 it as "do the buckets separate the customers who left from the ones who stayed",
 not as a forward-looking accuracy claim.

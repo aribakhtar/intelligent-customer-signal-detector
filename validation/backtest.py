@@ -121,7 +121,7 @@ def run_date(T_str: str, data) -> pd.DataFrame:
 
     # Renewal proximity must be measured from the prediction date, not from now.
     res = sig.detect(cust, inter, as_of=T.date())
-    # Band within each cycle's book - see signals.apply_percentile_bands.
+    # Band within each cycle's customers - see signals.apply_percentile_bands.
     sig.apply_percentile_bands(res)
 
     out = sig.to_frame(res).merge(
