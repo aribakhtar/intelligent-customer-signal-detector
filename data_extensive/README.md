@@ -6,14 +6,13 @@ Synthetic longitudinal SaaS/customer-success dataset.
 - 16,800 monthly account snapshots over 24 months
 - 6,771 timestamped raw support messages
 - 6,219 support tickets
-- 1,764 CSM interventions
 - 700 outcome records
 - 12,264 90-day prediction-label rows
 - 300 independently labelled LLM evaluation messages
 
 ## Temporal leakage rule
 For prediction date T, features may only use records with timestamps <= T.
-Do not use outcomes, decision_date, future snapshots, post-decision messages, or future interventions as predictors.
+Do not use outcomes, decision_date, future snapshots or post-decision messages as predictors.
 
 `is_censored=true` means the future outcome is unknown and must not be treated as a negative.
 

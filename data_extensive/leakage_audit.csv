@@ -1,9 +1,0 @@
-check,description,status
-decision_date_vs_contract_end,Use decision_date as prediction target timing,PASS
-censoring,"Censored accounts are unknown, not negatives",PASS
-historical_snapshots,24 monthly snapshots per account,PASS
-post_decision_text,Predictor text generated only up to decision date,PASS
-outcome_fields,Outcome table separated from feature tables,PASS
-intervention_timestamps,Intervention date and trigger stored,PASS
-temporal_split,Use chronological/out-of-time validation,PASS
-usage_zeroing,Usage does not collapse to zero before decision,PASS
