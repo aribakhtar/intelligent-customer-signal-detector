@@ -100,7 +100,7 @@ def run_pipeline(files: list[Path], as_of, limit: int | None, previous: dict | N
                  state="complete")
 
     with st.status("**L4 — Bucketing**", expanded=True) as s:
-        st.caption("Rank the book and drop each customer into a bucket, worst first.")
+        st.caption("Rank all customers and drop each one into a bucket, worst first.")
         payload = pl.to_nodes(assessments, prov, as_of, previous)
         cols = st.columns(len(payload["buckets"]))
         for c, b in zip(cols, payload["buckets"]):
@@ -195,7 +195,7 @@ if payload is None:
         "**L2 Consolidation** — gathers every source into one profile per customer.  \n"
         "**L3 Sentiment & scoring** — one model call per customer, fused with the "
         "deterministic signals.  \n"
-        "**L4 Bucketing** — ranks the book and assigns a bucket, worst first.")
+        "**L4 Bucketing** — ranks all customers and assigns a bucket, worst first.")
     st.stop()
 
 nodes = pd.DataFrame(payload["nodes"])
@@ -320,7 +320,7 @@ with tab_work:
                 st.markdown(f"**Next step ({r.action['owner']}):** {r.action['text']}")
 
 with tab_buckets:
-    st.subheader("How the book is split")
+    st.subheader("How the customers are split")
     cols = st.columns(len(buckets))
     for col, b in zip(cols, buckets):
         with col:

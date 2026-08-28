@@ -321,7 +321,7 @@ def _score(sigs: dict[str, Signal], r: pd.Series,
         # Only a renewal still ahead of us is urgent. A past-dated renewal means
         # the contract already turned over and the feed is carrying the ORIGINAL
         # end date, so we know nothing about the next one - amplifying on it
-        # boosted half the book for no reason.
+        # boosted half the customers for no reason.
         amp = (1.25 if 0 <= renewal_in <= 45 else
                1.12 if 45 < renewal_in <= 90 else 1.0)
     risk = int(round(min(100, raw * amp)))
@@ -417,7 +417,7 @@ def detect(cust: pd.DataFrame, inter: pd.DataFrame, client=None,
 
     if errors and len(errors) == len(rows):
         # Every call failed - that is a bad key, model name or network, not a
-        # per-account blip. Refuse rather than hand back a book of empty scores.
+        # per-account blip. Refuse rather than hand back a set of empty scores.
         raise NoLLMError(
             f"All {len(rows)} LLM calls failed, so no sentiment was analysed. "
             f"Check OPENAI_API_KEY and OPENAI_MODEL (={MODEL}) in .env.\n"
@@ -447,13 +447,13 @@ def to_frame(assessments: list[Assessment]) -> pd.DataFrame:
     } for a in assessments])
 
 
-# Share of the book that lands in each band under percentile mode, worst first.
+# Share of customers that land in each band under percentile mode, worst first.
 PERCENTILE_BANDS = [(0.03, "Critical"), (0.08, "High"), (0.15, "Watch")]
 
 
 def apply_percentile_bands(assessments: list[Assessment],
                            cuts=PERCENTILE_BANDS) -> list[Assessment]:
-    """Re-band by rank within the book instead of by absolute score.
+    """Re-band by rank across all customers instead of by absolute score.
 
     The absolute thresholds (70/50/30) assume a severity distribution. Real
     accounts do not decay like the demo set: on the 700-account backtest every

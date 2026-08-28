@@ -10,7 +10,7 @@
                               profile per customer_id
     L3  sentiment + scoring   signals.detect - deterministic signals plus the
                               LLM text layer, fused into a risk score
-    L4  bucketing             rank the book and drop each customer into a
+    L4  bucketing             rank all customers and drop each one into a
                               bucket, worst first, as a frontend-ready node
 
 Layers 1 and 3 both use the LLM. L1 uses it only for schemas the fingerprints
@@ -30,10 +30,10 @@ import pandas as pd
 import signals as sig
 
 # The four buckets, worst first. `rank` is the sort key a frontend can rely on;
-# `share` is the cumulative top fraction of the ranked book that lands in each.
+# `share` is the cumulative top fraction of the ranked customers in each.
 #
 # Why fractions rather than fixed score thresholds: how severe a 20% usage drop
-# looks depends entirely on the book. Fixed cut-points tuned on one population
+# looks depends entirely on the customer base. Fixed cut-points tuned on one
 # leave the worst buckets empty on a calmer one. Sizing by share keeps the
 # worklist workable whatever data arrives - the top 5% is always the top 5%.
 # Override `share` per deployment to match team capacity.
@@ -41,7 +41,7 @@ BUCKETS = [
     {
         "key": "urgent", "label": "Needs attention now", "rank": 0, "share": 0.05,
         "colour": "#B3261E",
-        "definition": "Top 5% of the book by risk. Typically explicit exit language "
+        "definition": "Top 5% of customers by risk. Typically explicit exit language "
                       "- cancellation, notice periods, a named competitor - or severe "
                       "multi-signal decay with a renewal close enough to matter.",
         "means": "Assume the customer is already leaving unless someone intervenes.",
@@ -467,7 +467,7 @@ def movement(nodes: list[dict], previous: dict | None) -> list[dict]:
 
 def to_nodes(assessments: list[sig.Assessment], provenance: dict, as_of=None,
              previous: dict | None = None) -> dict:
-    """Layer 4. Rank the book, bucket it, and emit frontend-ready nodes."""
+    """Layer 4. Rank all customers, bucket them, and emit frontend-ready nodes."""
     ranked = sorted(assessments, key=lambda a: a.risk_score, reverse=True)
     n = len(ranked) or 1
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")

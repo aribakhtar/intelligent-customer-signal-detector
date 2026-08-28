@@ -65,7 +65,7 @@ Each signal normalises to 0–1 and carries a human-readable evidence string.
 across feeds with different coverage. The same call returns the issue title, rationale, recommended
 action and owner.
 
-**L4 · Bucketing.** Ranks the book and cuts it by *share*, not fixed thresholds — top 5% *Needs
+**L4 · Bucketing.** Ranks all customers and cuts them by *share*, not fixed thresholds — top 5% *Needs
 attention now*, next 10% *At risk*, next 15% *Worth watching*, rest *Likely to stay* — each with an
 SLA. Fixed cut-points tuned on one population leave the worst buckets empty on a calmer one; shares
 keep the worklist workable whatever arrives. L4 also diffs against the previous run and flags who
@@ -154,6 +154,36 @@ intent precision 100% / recall 80.9%; sentiment AUC 0.965.
 - **Missing data is missing, not zero.** Absent signals are dropped with their weight redistributed,
   and are left out of the model prompt rather than padded with defaults it would reason over as fact.
 - **English, single-tenant, no PII redaction.** Production would strip PII before the model call.
+
+## With more time
+
+Roughly in the order I would build them.
+
+- **An ingestion agent instead of a single classify call.** Today L1 makes one model call per file
+  and takes the mapping it returns. A dedicated agent would inspect the file, propose a mapping,
+  *test* it against a sample of rows, and retry when the parse looks wrong — reading its own errors
+  rather than handing them downstream.
+- **Per-format parsers behind that agent.** The prototype is CSV-only. The same layer should pick a
+  parser per input: Excel, JSON, Parquet, a Zendesk or Salesforce API pull, PDF invoices for the
+  billing signals, and call transcripts. L1 already returns "what is this file" — choosing the reader
+  is the natural next branch.
+- **Streaming instead of batch.** Scoring is on-demand today. A queue-fed version would re-score an
+  account when a new message, ticket or payment event lands, and alert on *bucket transitions* —
+  "moved into At risk overnight" is far more actionable than a nightly absolute score.
+- **Learned weights.** The seven weights are hand-set. With the outcomes already in
+  `data_extensive/`, a logistic regression over the same normalised signals would fit them
+  properly — the extraction layer would not change, and the score stays as auditable as it is now.
+- **Concurrent scoring.** L3 calls the model serially, one customer at a time. Batching with a
+  thread pool (as `validation/eval_llm.py` already does) would take a 700-account run from minutes
+  to seconds and make full-book scoring practical in the UI.
+- **A feedback loop.** Record what the CSM actually did after each flag and whether the account
+  renewed, then feed that back — both to recalibrate the weights and to stop surfacing patterns the
+  team has learned to ignore.
+- **PII redaction before the model call**, plus per-tenant isolation and an audit log of every
+  prompt sent — the minimum for putting real customer text through a hosted model.
+- **Explain-the-delta.** The prototype says who escalated; it should say *what changed* between two
+  runs in one sentence — "usage held, but three angry messages arrived and CSAT fell 0.8".
+- **Multi-language and channel coverage.** English-only today; real support inboxes are not.
 
 ## Tools
 
