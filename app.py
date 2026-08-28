@@ -240,7 +240,7 @@ view = view.sort_values("urgency", ascending=False)
 def render_detail(r):
     c = st.columns(4)
     c[0].metric("Urgency", r.urgency, by_key[r.bucket]["label"])
-    c[1].metric("Movement", r.move, f"{r.delta:+d}" if pd.notna(r.delta) else None)
+    c[1].metric("Movement", r.move, f"{r.delta:+.0f}" if pd.notna(r.delta) else None)
     c[2].metric("ARR", f"${r.arr:,.0f}" if pd.notna(r.arr) else "n/a")
     c[3].metric("Renewal in", f"{r.renewal:.0f} d" if pd.notna(r.renewal) else "n/a")
     st.markdown(f"### {r.issue}")

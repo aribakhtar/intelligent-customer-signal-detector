@@ -353,7 +353,7 @@ def consolidate(specs: list[dict], as_of=None) -> tuple[pd.DataFrame, pd.DataFra
         # event table needs aggregating, and letting a column map turn it into a
         # profile puts a ticket id into a ticket-count field.
         if spec.get("mappings") and kind in ("unknown", "accounts_wide",
-                                             "interactions", "billing"):
+                                            "interactions", "billing"):
             df = _apply_mappings(df, spec)
             kind = "interactions" if "text" in df.columns else "accounts_wide"
 
