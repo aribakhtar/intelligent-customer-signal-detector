@@ -27,7 +27,6 @@ import os
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from datetime import date
-from pathlib import Path
 
 import pandas as pd
 from dotenv import load_dotenv
@@ -35,8 +34,10 @@ from dotenv import load_dotenv
 load_dotenv()   # read .env from the project root before anything reads the env
 
 MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
-DATA = Path(__file__).parent / "data"
-TODAY = date(2026, 8, 27)
+# Renewal proximity is measured from a reference date. It is threaded explicitly
+# through detect() -> _score() rather than kept as module state: a hardcoded
+# "today" silently rots, and callers that need a past date (a backtest, an
+# --as-of run) would otherwise have to mutate a global to get it.
 
 # Signal weights. Sum to 1.0; risk score = 100 * weighted sum.
 WEIGHTS = {
@@ -86,14 +87,6 @@ class Assessment:
     def top_drivers(self) -> list[Signal]:
         return sorted([s for s in self.signals if s.score > 0.15],
                       key=lambda s: s.contribution, reverse=True)[:3]
-
-
-# ---------------------------------------------------------------- data loading
-
-def load(data_dir: Path = DATA) -> tuple[pd.DataFrame, pd.DataFrame]:
-    cust = pd.read_csv(data_dir / "customers.csv")
-    inter = pd.read_csv(data_dir / "interactions.csv")
-    return cust, inter
 
 
 def _clamp(x: float) -> float:
@@ -243,20 +236,22 @@ SCHEMA = {
 }
 
 
-def _prompt(r: pd.Series, sigs: dict[str, Signal], msgs: pd.DataFrame) -> str:
+def _prompt(r: pd.Series, sigs: dict[str, Signal], msgs: pd.DataFrame,
+            as_of: date) -> str:
     facts = "\n".join(f"- {s.name}: {s.evidence} (severity {s.score:.2f})" for s in sigs.values())
     convo = "\n".join(f"[{m.date} / {m.channel}] {m.text}" for m in msgs.itertuples()) \
         or "(no recent interactions on record)"
     # Only state the attributes this feed actually carries - never pad the prompt
     # with defaults the model would then reason over as if they were facts.
-    bits = [str(r.account_name)]
+    bits = [str(r.account_name if _has(r, "account_name") else r.customer_id)]
     for col, fmt in (("segment", str), ("plan", lambda v: f"{v} plan"),
                      ("arr_usd", lambda v: f"${int(v):,} ARR"),
                      ("tenure_months", lambda v: f"{int(v)} months tenure")):
         if _has(r, col):
             bits.append(fmt(r[col]))
     if _has(r, "renewal_date"):
-        bits.append(f"renewal in {(date.fromisoformat(str(r.renewal_date)) - TODAY).days} days")
+        bits.append(
+            f"renewal in {(date.fromisoformat(str(r.renewal_date)) - as_of).days} days")
     return (f"ACCOUNT: {bits[0]} ({', '.join(bits[1:])})\n\n"
             f"BEHAVIOURAL / BILLING SIGNALS:\n{facts}\n\n"
             f"RECENT INTERACTIONS (oldest first):\n{convo}\n\n"
@@ -281,13 +276,14 @@ def _client():
         return None
 
 
-def _analyse_text(client, r, sigs, msgs, errors: list | None = None) -> dict | None:
+def _analyse_text(client, r, sigs, msgs, as_of: date,
+                  errors: list | None = None) -> dict | None:
     try:
         resp = client.chat.completions.create(
             model=MODEL,
             temperature=0.2,          # analysis, not prose - keep it stable across runs
             messages=[{"role": "system", "content": SYSTEM},
-                      {"role": "user", "content": _prompt(r, sigs, msgs)}],
+                      {"role": "user", "content": _prompt(r, sigs, msgs, as_of)}],
             response_format={"type": "json_schema", "json_schema": {
                 "name": "account_assessment", "strict": True, "schema": SCHEMA}},
         )
@@ -305,7 +301,8 @@ def _analyse_text(client, r, sigs, msgs, errors: list | None = None) -> dict | N
 
 # ------------------------------------------------------------------- scoring
 
-def _score(sigs: dict[str, Signal], r: pd.Series) -> tuple[int, float, str, int | None]:
+def _score(sigs: dict[str, Signal], r: pd.Series,
+           as_of: date | None = None) -> tuple[int, float, str, int | None]:
     for name, sig in sigs.items():
         sig.weight = WEIGHTS[name]
     # Renormalise over the signals this dataset actually supports, so a feed
@@ -319,8 +316,14 @@ def _score(sigs: dict[str, Signal], r: pd.Series) -> tuple[int, float, str, int 
     renewal_in = None
     amp = 1.0
     if _has(r, "renewal_date"):
-        renewal_in = (date.fromisoformat(str(r.renewal_date)) - TODAY).days
-        amp = 1.25 if renewal_in <= 45 else 1.12 if renewal_in <= 90 else 1.0
+        renewal_in = (date.fromisoformat(str(r.renewal_date))
+                      - (as_of or date.today())).days
+        # Only a renewal still ahead of us is urgent. A past-dated renewal means
+        # the contract already turned over and the feed is carrying the ORIGINAL
+        # end date, so we know nothing about the next one - amplifying on it
+        # boosted half the book for no reason.
+        amp = (1.25 if 0 <= renewal_in <= 45 else
+               1.12 if 45 < renewal_in <= 90 else 1.0)
     risk = int(round(min(100, raw * amp)))
 
     band = next(b for t, b in BANDS if risk >= t)
@@ -340,7 +343,7 @@ class NoLLMError(RuntimeError):
 
 
 def detect(cust: pd.DataFrame, inter: pd.DataFrame, client=None,
-           progress=None) -> list[Assessment]:
+           progress=None, as_of: date | None = None) -> list[Assessment]:
     """Run the full pipeline and return assessments sorted by priority.
 
     `client` is injectable so tests can drive the pipeline with a stub. In normal
@@ -355,6 +358,7 @@ def detect(cust: pd.DataFrame, inter: pd.DataFrame, client=None,
             "No usable OPENAI_API_KEY found. Sentiment and churn-intent analysis require an "
             "LLM - put a real key in the .env file in the project root and re-run.")
 
+    ref = as_of or date.today()
     by_cust = {cid: g.sort_values("date") for cid, g in inter.groupby("customer_id")}
     rows = [r for _, r in cust.iterrows()]
     errors: list[str] = []
@@ -364,7 +368,7 @@ def detect(cust: pd.DataFrame, inter: pd.DataFrame, client=None,
         sigs = structured_signals(r)
         texts = msgs.text.tolist()
 
-        out = _analyse_text(client, r, sigs, msgs, errors)
+        out = _analyse_text(client, r, sigs, msgs, ref, errors)
         if out is None:
             # The call failed after retries. Surface it as an unscored account
             # rather than inventing a sentiment number the model never produced.
@@ -384,9 +388,13 @@ def detect(cust: pd.DataFrame, inter: pd.DataFrame, client=None,
             "Explicit exit language in recent messages" if churn > 0.5 else
             "Some exit-adjacent language" if churn > 0.2 else "No exit language detected")
 
-        risk, priority, band, renewal_in = _score(sigs, r)
-        a = Assessment(r.customer_id, r.account_name,
-                       r.segment if _has(r, 'segment') else '-',
+        risk, priority, band, renewal_in = _score(sigs, r, ref)
+        a = Assessment(r.customer_id,
+                       # Every descriptive field is optional. A feed that carries
+                       # only an id and some metrics is still scoreable; falling
+                       # back to the id beats crashing the whole run.
+                       r.account_name if _has(r, "account_name") else str(r.customer_id),
+                       r.segment if _has(r, "segment") else "-",
                        float(r.arr_usd) if _has(r, 'arr_usd') else None,
                        renewal_in, risk, priority, band, list(sigs.values()), themes,
                        llm_used=out is not None)
@@ -463,74 +471,3 @@ def apply_percentile_bands(assessments: list[Assessment],
         pct = (i + 1) / n
         a.band = next((b for cut, b in cuts if pct <= cut), "Healthy")
     return assessments
-
-
-# Ordinal ground-truth labels this project understands, worst first. Any column
-# named _<something> holding these values can be evaluated against.
-RISK_LABELS = ["critical", "high", "medium", "low"]
-BAND_RANK = {"Critical": 0, "High": 1, "Watch": 2, "Healthy": 3}
-
-
-def evaluate(df: pd.DataFrame, cust: pd.DataFrame, thresholds=(30, 50, 70)) -> str:
-    """Score the detector against whatever held-out label the dataset carries.
-
-    Handles two label schemes: the synthetic set's `_archetype` (healthy vs not)
-    and an ordinal `_ground_truth_risk` of critical/high/medium/low. Sanity
-    checks on labelled data, not a production accuracy claim.
-    """
-    label = next((c for c in ("_ground_truth_risk", "_archetype") if c in cust.columns), None)
-    if label is None:
-        return "(no ground-truth labels in this dataset - skipping evaluation)"
-    m = df.merge(cust[["customer_id", label]], on="customer_id")
-    vals = set(m[label].astype(str).str.lower())
-
-    if vals <= set(RISK_LABELS):   # ordinal scheme
-        rank = {v: i for i, v in enumerate(RISK_LABELS)}
-        truth_rank = m[label].str.lower().map(rank)
-        pred_rank = m.band.map(BAND_RANK)
-        # "At risk" = the two worst labels; medium is a watch item, not a miss.
-        truth = truth_rank <= 1
-        lines = [f"Evaluation vs held-out `{label}` (at risk = critical or high)",
-                 f"  rank correlation  Spearman {m['risk_score'].corr(-truth_rank, method='spearman'):.3f}"
-                 f"   Kendall {m['risk_score'].corr(-truth_rank, method='kendall'):.3f}",
-                 f"  band agreement    exact {(pred_rank == truth_rank).mean():.0%}"
-                 f"   within one band {((pred_rank - truth_rank).abs() <= 1).mean():.0%}"]
-    else:                          # binary archetype scheme
-        truth = m[label] != "healthy"
-        lines = [f"Evaluation vs held-out `{label}` (at risk = any non-healthy archetype)"]
-
-    for t in thresholds:
-        pred = m.risk_score >= t
-        tp, fp, fn = int((truth & pred).sum()), int((~truth & pred).sum()), int((truth & ~pred).sum())
-        prec, rec = tp / max(tp + fp, 1), tp / max(tp + fn, 1)
-        band = next(b for lo, b in BANDS if t >= lo)
-        lines.append(f"  risk >= {t:>3} ({band:<8}) precision {prec:>4.0%}  recall {rec:>4.0%}  "
-                     f"(tp {tp}, fp {fp}, fn {fn}, n {len(m)})")
-
-    lines.append(f"  risk score by {label.lstrip('_')}:")
-    g = m.groupby(label).risk_score.agg(["min", "mean", "max", "count"])
-    g = g.reindex([v for v in RISK_LABELS if v in g.index]) if vals <= set(RISK_LABELS) \
-        else g.sort_values("mean", ascending=False)
-    for name, row in g.iterrows():
-        lines.append(f"    {name:<18} min {row['min']:>3.0f}  mean {row['mean']:>5.1f}  "
-                     f"max {row['max']:>3.0f}  (n {row['count']:.0f})")
-    return "\n".join(lines)
-
-
-if __name__ == "__main__":
-    import sys
-
-    c, i = load()
-    try:
-        res = detect(c, i)
-    except NoLLMError as e:
-        sys.exit(f"\n{e}\n")
-    df = to_frame(res)
-    failed = sum(1 for a in res if not a.llm_used)
-    print(f"Model: {MODEL}" + (f"   [{failed} accounts could not be analysed]" if failed else ""))
-    print()
-    print(df[["account", "segment", "risk_score", "band", "top_drivers"]].head(12).to_string(index=False))
-    print("\n" + evaluate(df, c))
-    out = DATA / "signal_summary.csv"
-    df.to_csv(out, index=False)
-    print(f"\nfull summary -> {out}")

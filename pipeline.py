@@ -250,9 +250,7 @@ def classify(path: Path, client=None) -> dict:
             response_format={"type": "json_schema", "json_schema": {
                 "name": "schema_map", "strict": True, "schema": MAP_SCHEMA}})
         out = json.loads(r.choices[0].message.content)
-        # Validate both ends of every mapping. A hallucinated source column reads
-        # the wrong data; a hallucinated canonical field silently does nothing.
-        # Either way the score would be computed from something we did not intend.
+        # Validate both ends of every mapping. 
         allowed = set(CANONICAL) | {"text", "date", "channel"}
         clean, dropped = [], []
         for m in out["mappings"]:
@@ -320,7 +318,7 @@ def consolidate(specs: list[dict], as_of=None) -> tuple[pd.DataFrame, pd.DataFra
     describe the present.
     """
     profiles: dict[str, dict] = {}
-    claims: dict[str, dict[str, int]] = {}     # customer -> field -> winning priority
+    claims: dict[str, dict[str, int]] = {}
     texts: list[dict] = []
     provenance: dict[str, set] = {}
 
@@ -382,17 +380,25 @@ def consolidate(specs: list[dict], as_of=None) -> tuple[pd.DataFrame, pd.DataFra
         elif kind == "tickets":
             # One row per ticket, not per customer. Aggregating is the whole job:
             # absorbing these as profiles would leave a ticket id in a count field.
-            created = pd.to_datetime(df.get("created_at"), errors="coerce")
-            resolved = pd.to_datetime(df.get("resolved_at"), errors="coerce")
+            # Every optional column defaults to a Series of the right length.
+            # pd.to_datetime(None) returns a scalar NaT, and df.get(x, False) a
+            # bare bool - either one turns the vectorised code below into an
+            # AttributeError the moment a feed omits a column.
+            blank = pd.Series(pd.NaT, index=df.index)
+            created = pd.to_datetime(df.get("created_at", blank), errors="coerce")
+            resolved = pd.to_datetime(df.get("resolved_at", blank), errors="coerce")
             ref = as_of if as_of is not None else created.max()
             last30 = created > ref - pd.Timedelta(days=30)
-            prev30 = (created <= ref - pd.Timedelta(days=30)) &                      (created > ref - pd.Timedelta(days=60))
+            prev30 = ((created <= ref - pd.Timedelta(days=30))
+                      & (created > ref - pd.Timedelta(days=60)))
             unresolved = resolved.isna() | (resolved > ref)
+            # Defaults must be Series, not scalars - a bare False has no .astype,
+            # so a ticket export missing either column would crash the run.
             sev = df.get("severity", pd.Series("", index=df.index)).astype(str).str.lower()
+            reopened = df.get("reopened", pd.Series(False, index=df.index)).fillna(False)
             agg = pd.DataFrame({"customer_id": df.customer_id.astype(str)})
             for name, mask in (("tickets_last_30d", last30), ("tickets_prev_30d", prev30),
-                               ("tickets_reopened_30d", last30 & df.get(
-                                   "reopened", False).astype(bool)),
+                               ("tickets_reopened_30d", last30 & reopened.astype(bool)),
                                ("open_p1_tickets", unresolved & sev.isin(
                                    {"critical", "p1", "urgent"}))):
                 agg[name] = mask.fillna(False).astype(int)
@@ -531,14 +537,9 @@ def run_once(inbox: Path, out: Path, as_of=None) -> dict:
         print("L2  no identifiable customers - nothing to score")
         return {}
 
-    # Renewal proximity has to be measured from the scoring date, not from today.
-    prev_today = sig.TODAY
-    if as_of is not None:
-        sig.TODAY = as_of.date()
-    try:
-        res = sig.detect(cust, inter, client=client)
-    finally:
-        sig.TODAY = prev_today
+    # Renewal proximity is measured from the scoring date, not from today.
+    res = sig.detect(cust, inter, client=client,
+                     as_of=as_of.date() if as_of is not None else None)
     print(f"L3  scored {len(res)} customers ({sum(a.llm_used for a in res)} analysed)")
 
     previous = json.loads(out.read_text(encoding="utf-8")) if out.exists() else None

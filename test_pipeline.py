@@ -119,6 +119,19 @@ def test_precedence_beats_filename_order():
     assert row.logins_last_30d == 50
 
 
+def test_ticket_export_missing_optional_columns():
+    """A minimal ticket export must aggregate, not crash on absent columns."""
+    spec = pl.classify(_write("bare_tickets.csv", pd.DataFrame({
+        "customer_id": ["A", "A", "B"],
+        "created_at": ["2025-04-20", "2025-04-25", "2025-04-22"],
+    })))                                  # no resolved_at, severity or reopened
+    cust, _, _ = pl.consolidate([spec])
+    row = cust.set_index("customer_id").loc["A"]
+    assert row.tickets_last_30d == 2
+    assert row.tickets_reopened_30d == 0, "absent column means zero, not a crash"
+    assert row.open_p1_tickets == 0
+
+
 def test_only_recent_messages_reach_the_model():
     """Sentiment is about how they sound now, not 18 months ago."""
     n = pl.MAX_MSGS_PER_CUSTOMER

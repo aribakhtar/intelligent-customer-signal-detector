@@ -12,6 +12,11 @@ positive, else neutral; churn_language >0.5 means churn intent.
 """
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))   # import signals/adapt from the project root
 import json
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -22,7 +27,7 @@ import pandas as pd
 import signals as sig
 from backtest import _auc
 
-SRC = Path(__file__).parent / "data_extensive" / "llm_evaluation_set.csv"
+SRC = ROOT / "data_extensive" / "llm_evaluation_set.csv"
 
 SYSTEM = """You classify a single customer support message from a B2B SaaS account.
 
@@ -65,7 +70,7 @@ def main(limit: int | None = None) -> None:
     if limit:
         df = df.sample(limit, random_state=7)
 
-    cache = Path(__file__).parent / "data" / "llm_eval_scores.csv"
+    cache = ROOT / "data" / "llm_eval_scores.csv"
     if cache.exists() and not limit:
         raw = pd.read_csv(cache)
         out = [{"sentiment_risk": a, "churn_language": b} if pd.notna(a) else None

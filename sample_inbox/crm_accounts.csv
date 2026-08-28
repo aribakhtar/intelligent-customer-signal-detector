@@ -1,0 +1,31 @@
+customer_id,account_name,segment,arr_usd,logins_last_30d,logins_prev_30d,tickets_last_30d,tickets_prev_30d,csat_current,csat_prev_quarter,failed_payments_90d,days_payment_overdue
+C001,Acme Retail,Enterprise,68472.0,69.0,95.0,9.0,1.0,1.5,3.5,0,30
+C002,BrightMart,Mid-Market,20640.0,73.0,89.0,5.0,1.0,3.0,5.0,2,60
+C003,CloudNine,Enterprise,124740.0,67.0,68.0,8.0,6.0,3.5,4.0,0,0
+C004,Delta Health,Enterprise,34488.0,50.0,64.0,10.0,2.0,2.5,4.5,0,0
+C005,Evergreen Foods,SMB,22932.0,47.0,77.0,5.0,3.0,3.5,4.5,0,0
+C006,FinEdge,Enterprise,23400.0,61.0,91.0,10.0,2.0,1.5,3.5,0,30
+C007,GreenLeaf,Mid-Market,103536.0,59.0,62.0,7.0,3.0,5.0,4.5,0,0
+C008,Horizon Labs,Enterprise,140220.0,58.0,84.0,10.0,4.0,2.5,4.5,1,60
+C009,InnovaTech,Mid-Market,27408.0,76.0,73.0,6.0,4.0,3.5,4.5,0,0
+C010,Jupiter Media,SMB,62880.0,61.0,68.0,2.0,4.0,3.5,4.0,0,0
+C011,Kinetic Works,Enterprise,90048.0,85.0,83.0,9.0,5.0,2.5,3.5,0,60
+C012,Lumen Hotels,Mid-Market,140412.0,57.0,62.0,15.0,5.0,3.5,4.5,0,0
+C013,Metro Logistics,Enterprise,137328.0,63.0,87.0,8.0,2.0,1.5,3.5,1,60
+C014,Nova Education,SMB,18228.0,90.0,90.0,4.0,3.0,4.5,5.0,0,0
+C015,Orbit Systems,Enterprise,118140.0,78.0,90.0,6.0,2.0,2.5,4.5,0,0
+C016,Pioneer Energy,Enterprise,100524.0,47.0,74.0,6.0,4.0,3.5,4.5,0,0
+C017,Quantum Retail,Mid-Market,28356.0,91.0,88.0,5.0,1.0,3.5,3.5,0,0
+C018,Riverstone,SMB,51828.0,71.0,66.0,8.0,4.0,4.0,5.0,0,60
+C019,Summit Telecom,Enterprise,26316.0,54.0,84.0,9.0,1.0,1.5,3.5,0,0
+C020,Vertex Design,SMB,41952.0,71.0,69.0,1.0,1.0,4.5,5.0,0,0
+C021,Willow Finance,Enterprise,56424.0,61.0,81.0,10.0,4.0,3.0,5.0,1,60
+C022,Zenith Auto,Mid-Market,97560.0,70.0,74.0,6.0,4.0,3.5,4.5,0,0
+C023,Atlas Travel,SMB,76056.0,55.0,54.0,6.0,4.0,3.5,4.0,0,0
+C024,BluePeak,Mid-Market,136164.0,77.0,91.0,10.0,2.0,1.5,3.5,0,0
+C025,Cedar Analytics,Enterprise,61320.0,44.0,71.0,4.0,2.0,3.5,4.5,0,0
+C026,Drift Commerce,SMB,28800.0,53.0,59.0,4.0,3.0,4.0,4.0,0,0
+C027,Ember Security,Enterprise,123432.0,72.0,94.0,11.0,5.0,1.5,3.5,1,60
+C028,Falcon Manufacturing,Enterprise,69792.0,74.0,90.0,6.0,2.0,2.5,4.5,2,60
+C029,Granite Media,Mid-Market,63768.0,95.0,90.0,9.0,3.0,4.0,5.0,0,0
+C030,Helio Health,SMB,124668.0,67.0,61.0,3.0,3.0,4.5,4.5,0,0

@@ -167,13 +167,15 @@ pip install -r requirements.txt
 #   OPENAI_API_KEY=sk-...
 #   OPENAI_MODEL=gpt-4o-mini     (optional, this is the default)
 
-python make_data.py                    # regenerate the synthetic dataset (optional)
-python signals.py                      # CLI: ranked list + evaluation + CSV export
-python test_signals.py                 # self-checks (no key or network needed)
+python pipeline.py sample_inbox/                  # L1-L4 once, writes data/nodes.json
+python pipeline.py sample_inbox/ --watch 60      # keep polling the folder
+python pipeline.py data_extensive/ --as-of 2025-06-30 -o data/nodes_asof.json
+python validation/check_pooled.py                # grade point-in-time runs
+python test_signals.py && python test_pipeline.py   # 19 self-checks, no key needed
 streamlit run app.py                   # the demo UI
 ```
 
-`.env` is read automatically by `signals.py` via `python-dotenv`, and is gitignored.
+Create `.env` in the project root with `OPENAI_API_KEY=sk-...` (and optionally `OPENAI_MODEL`). It is read automatically via `python-dotenv` and is gitignored.
 
 The UI has three tabs: **Prioritised watchlist** (ranked table + a "today's briefing" card
 per top account, CSV export), **Signal heatmap** (per-account severity across all seven
@@ -250,9 +252,9 @@ Next step     Account Exec to open a save conversation this week before the rene
 
 ## Assumptions
 
-- **Synthetic data.** No real customer data was used. `make_data.py` generates 38 accounts
-  across six behavioural archetypes with realistic support text. The `_archetype` column is
-  ground truth for evaluation only and is never shown to the detector.
+- **Synthetic data.** No real customer data was used. `data_extensive/` holds a 700-account,
+  24-month panel with outcomes and labels; `sample_inbox/` is a small three-file demo. Label
+  columns are quarantined by L1 and never reach scoring.
 - **Batch, not streaming.** The prototype scores a snapshot on demand. Production would run
   this nightly and alert on band transitions rather than absolute scores.
 - **Weights are hand-set, not learned.** With real churn outcomes they should be fitted
@@ -280,13 +282,13 @@ Next step     Account Exec to open a save conversation this week before the rene
 |---|---|
 | `signals.py` | Detection core — signal extraction, LLM layer, scoring, evaluation |
 | `app.py` | Streamlit UI |
-| `make_data.py` | Synthetic dataset generator (`python make_data.py [outdir]`) |
-| `adapt.py` | Converts a long-format monthly CSV into the two input frames |
-| `backtest.py` | Point-in-time backtest against real outcomes in `data_extensive/` |
-| `eval_llm.py` | Scores the LLM layer against human-labelled messages |
+| `pipeline.py` | The four layers (L1 document processing → L4 bucketing) + CLI |
+| `adapt.py` | Converts a long-format monthly panel into the two input frames |
+| `validation/` | Backtest reference implementation and the graders |
 | `test_signals.py` | Self-checks (`python test_signals.py`) |
-| `data/` | `customers.csv`, `interactions.csv`, generated `signal_summary.csv` |
-| `DATA_REQUEST.md` | What real data would be needed to validate predictive accuracy |
+| `sample_inbox/` | Small three-file demo input — run the pipeline against this |
+| `data_extensive/` | 700 accounts, 24 months, with outcomes and labels |
+| `data/` | Generated output only (gitignored) — `nodes*.json` and friends |
 | `.env` | `OPENAI_API_KEY` and optional `OPENAI_MODEL` (gitignored) |
 
 ## Tools

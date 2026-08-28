@@ -1,0 +1,13 @@
+AcctRef,ClientName,HealthSurveyOutOfTen,BillingArrearsDays
+C001,Acme Retail,3.0,30
+C002,BrightMart,6.0,60
+C003,CloudNine,7.0,0
+C004,Delta Health,5.0,0
+C005,Evergreen Foods,7.0,0
+C006,FinEdge,3.0,30
+C007,GreenLeaf,10.0,0
+C008,Horizon Labs,5.0,60
+C009,InnovaTech,7.0,0
+C010,Jupiter Media,7.0,0
+C011,Kinetic Works,5.0,60
+C012,Lumen Hotels,7.0,0

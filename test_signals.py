@@ -6,26 +6,79 @@ maths, the wiring and the ranking under test without pretending a keyword
 matcher is sentiment analysis - the real run always uses the model.
 """
 import json
-import tempfile
 import types
-from pathlib import Path
+from datetime import date
 
 import pandas as pd
 
-import make_data
 import signals as sig
 
-# The tests own their fixture: data/ holds whatever dataset is currently loaded
-# for the demo, so generate a known synthetic set into a temp dir instead.
-_FIXTURE = Path(tempfile.mkdtemp(prefix="signal-detector-fixture-"))
-make_data.main(_FIXTURE)
+# The tests own their fixture and build it in memory. Reading data/ would couple
+# them to whatever dataset happens to be loaded for a demo; generating CSVs would
+# add file I/O for no benefit. Values are hand-set, not random, so a failure
+# always reproduces.
+#
+# Each archetype's text is written to contain the phrases _stub_client keys on,
+# so the stubbed "model" returns the sentiment that archetype should produce.
+_ARCHETYPES = {
+    #                usage prev/last  tickets prev/last  csat prev/now  renewal
+    "healthy":         (400, 420,      3, 2,   4.4, 4.5,  300),
+    "churn_intent":    (400, 100,      3, 8,   4.2, 1.8,   30),
+    "quiet_decline":   (400,  20,      3, 2,   4.4, 3.0,   30),
+    "support_strain":  (400, 300,      2, 9,   4.0, 2.6,  300),
+    "billing_friction": (400, 380,     3, 5,   4.1, 3.2,  200),
+}
+_TEXT = {
+    "healthy": "Thanks for the quick turnaround, the team is happy.",
+    "churn_intent": "Leadership asked what it would take to cancel. "
+                    "We are evaluating alternatives before the renewal.",
+    "quiet_decline": "We have not been using it much lately - can we pause seats?",
+    "support_strain": "Reopening this again, it is still failing and blocking us.",
+    "billing_friction": "We were charged twice and are still waiting on the credit.",
+}
+_BILLING = {"billing_friction": (3, 45), "churn_intent": (1, 10)}   # failed, overdue
+
+
+def _make_fixture(per_archetype: int = 8):
+    """Build the two input frames directly, no files involved.
+
+    Sized so the percentile bands are actually exercised: the worst bucket takes
+    the top 3%, so a book smaller than ~34 accounts never fills it.
+    """
+    today = date(2026, 8, 27)
+    rows, msgs = [], []
+    for arch, (lp, ll, tp, tl, cp, cc, renew) in _ARCHETYPES.items():
+        failed, overdue = _BILLING.get(arch, (0, 0))
+        for i in range(per_archetype):
+            cid = f"{arch[:2].upper()}{i:02d}"
+            rows.append({
+                "customer_id": cid, "account_name": f"{arch.title()} {i}",
+                "segment": ["Enterprise", "Mid-Market", "SMB"][i % 3],
+                "arr_usd": 20_000 * (i + 1),
+                "renewal_date": (pd.Timestamp(today) + pd.Timedelta(days=renew)).date().isoformat(),
+                "logins_prev_30d": lp, "logins_last_30d": ll,
+                "tickets_prev_30d": tp, "tickets_last_30d": tl,
+                "tickets_reopened_30d": 3 if arch == "support_strain" else 0,
+                "open_p1_tickets": 1 if arch == "support_strain" else 0,
+                "csat_prev_quarter": cp, "csat_current": cc,
+                "nps_last": 60 if arch == "healthy" else -10,
+                "failed_payments_90d": failed, "days_payment_overdue": overdue,
+                "invoice_disputes_90d": 0, "downgraded_last_90d": 0,
+                "seats_licensed": 100,
+                "seats_active": 90 if arch == "healthy" else 30,
+                "feature_adoption_pct": 0.8 if arch == "healthy" else 0.3,
+                "_archetype": arch,
+            })
+            msgs.append({"customer_id": cid, "date": "2026-08-20",
+                         "channel": "email", "text": _TEXT[arch]})
+    return pd.DataFrame(rows), pd.DataFrame(msgs)
 
 
 def load_fixture():
-    return sig.load(_FIXTURE)
+    return _make_fixture()
 
 
-def _stub_client(fail_for: set[str] = frozenset()):   # fail_for = account names
+def _stub_client(fail_for: frozenset[str] | set[str] = frozenset()):   # fail_for = account names
     """A fake OpenAI client. Reads the prompt, returns a plausible assessment.
 
     Stands in for the model only so the surrounding logic can be tested; it is
@@ -119,6 +172,45 @@ def test_missing_columns_are_skipped_not_zeroed():
     # Weights of present signals are renormalised, never silently summing to <1.
     assert sum(x.weight for x in s_full.values()) + sig.WEIGHTS["text_sentiment"] \
         + sig.WEIGHTS["churn_language"] == 1.0
+
+
+def test_renewal_amplifier_only_looks_forward():
+    """A contract that already ended tells us nothing about the next renewal."""
+    base = pd.Series({
+        "logins_prev_30d": 100, "logins_last_30d": 50,
+        "csat_current": 2.0, "arr_usd": 50_000,
+    })
+    today = date(2026, 6, 1)      # pinned, so the test cannot drift with the clock
+
+    def risk(renewal_date):
+        r = base.copy()
+        r["renewal_date"] = renewal_date
+        return sig._score(sig.structured_signals(r), r, as_of=today)[0]
+
+    soon = risk((today + pd.Timedelta(days=20)).isoformat())      # inside 45d
+    mid = risk((today + pd.Timedelta(days=70)).isoformat())       # 45-90d
+    far = risk((today + pd.Timedelta(days=300)).isoformat())      # beyond
+    past = risk((today - pd.Timedelta(days=200)).isoformat())     # already ended
+
+    assert soon > mid > far, "a nearer renewal must raise urgency"
+    assert past == far, f"a past renewal must not amplify: {past} vs {far}"
+
+    # With no as_of the reference is the real clock, not a baked-in constant -
+    # a hardcoded "today" would silently rot a little more each day.
+    r = base.copy()
+    r["renewal_date"] = (date.today() + pd.Timedelta(days=20)).isoformat()
+    assert sig._score(sig.structured_signals(r), r)[3] == 20
+
+
+def test_id_only_feed_still_scores():
+    """A feed with an id and a couple of metrics must score, not crash."""
+    cust = pd.DataFrame([{"customer_id": "X1", "csat_current": 2.0,
+                          "logins_prev_30d": 100, "logins_last_30d": 30}])
+    inter = pd.DataFrame(columns=["customer_id", "date", "channel", "text"])
+    a = sig.detect(cust, inter, client=_stub_client())[0]
+    assert a.account_name == "X1", "no account_name should fall back to the id"
+    assert a.segment == "-" and a.arr_usd is None
+    assert a.risk_score > 0
 
 
 def test_no_llm_is_an_error_not_a_fallback():

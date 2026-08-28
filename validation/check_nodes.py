@@ -12,6 +12,11 @@ not as a forward-looking accuracy claim.
 """
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))   # import signals/adapt from the project root
 import json
 import sys
 from pathlib import Path
@@ -19,36 +24,17 @@ from pathlib import Path
 import pandas as pd
 
 CHURN = {"churned_voluntary", "churned_nonpayment", "downgraded"}
-SRC = Path(__file__).parent / "data_extensive" / "outcomes.csv"
-
-
-LABELS = Path(__file__).parent / "data_extensive" / "prediction_labels_90d.csv"
+SRC = ROOT / "data_extensive" / "outcomes.csv"
 
 
 def main(path: Path) -> None:
     payload = json.loads(path.read_text(encoding="utf-8"))
     nodes = pd.DataFrame(payload["nodes"])
-    as_of = payload.get("as_of")
+    out = pd.read_csv(SRC)
 
-    if as_of:
-        # A point-in-time run is graded on the 90-day forward label for that same
-        # date - the identical basis backtest.py uses, so the two are comparable.
-        lab = pd.read_csv(LABELS, parse_dates=["prediction_date"])
-        lab = lab[(lab.prediction_date == pd.Timestamp(as_of))
-                  & lab.eligible_for_prediction
-                  & (lab.outcome_type != "censored")].copy()
-        lab["churned"] = lab.outcome_type.isin(CHURN).astype(int)
-        m = nodes.merge(lab[["account_id", "churned", "outcome_type"]],
-                        left_on="id", right_on="account_id", how="inner")
-        m = m.rename(columns={"outcome_type": "outcome"})
-        print(f"POINT-IN-TIME run as of {as_of}, graded on the next 90 days")
-    else:
-        out = pd.read_csv(SRC)
-        m = nodes.merge(out, left_on="id", right_on="account_id", how="inner")
-        m = m[~m.is_censored.astype(bool)]      # unknown outcome is not a negative
-        m["churned"] = m.outcome.isin(CHURN).astype(int)
-        print("FULL-HISTORY run, graded on final outcomes. Not a forward-looking "
-              "result:\nrecent months may post-date a customer's decision.")
+    m = nodes.merge(out, left_on="id", right_on="account_id", how="inner")
+    m = m[~m.is_censored.astype(bool)]          # unknown outcome is not a negative
+    m["churned"] = m.outcome.isin(CHURN).astype(int)
 
     print(f"{len(m)} customers with a known outcome "
           f"({m.churned.sum()} churned, {m.churned.mean():.1%} base rate)\n")
@@ -83,4 +69,4 @@ def main(path: Path) -> None:
 
 if __name__ == "__main__":
     main(Path(sys.argv[1]) if len(sys.argv) > 1 else
-         Path(__file__).parent / "data" / "nodes_extensive.json")
+         ROOT / "data" / "nodes_extensive.json")

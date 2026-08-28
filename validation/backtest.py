@@ -17,6 +17,11 @@ Two things in this dataset will silently ruin a backtest if taken at face value:
 from __future__ import annotations
 
 import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))   # import signals/adapt from the project root
+import sys
 from datetime import date
 from pathlib import Path
 
@@ -24,7 +29,7 @@ import pandas as pd
 
 import signals as sig
 
-SRC = Path(__file__).parent / "data_extensive"
+SRC = ROOT / "data_extensive"
 CHURN = {"churned_voluntary", "churned_nonpayment", "downgraded"}
 # Quarterly, so the 90-day horizons do not overlap and no account is counted twice.
 DEFAULT_DATES = ["2025-03-31", "2025-06-30", "2025-09-30"]
@@ -115,11 +120,7 @@ def run_date(T_str: str, data) -> pd.DataFrame:
         return pd.DataFrame()
 
     # Renewal proximity must be measured from the prediction date, not from now.
-    sig.TODAY = T.date()
-    try:
-        res = sig.detect(cust, inter)
-    finally:
-        sig.TODAY = date(2026, 8, 27)
+    res = sig.detect(cust, inter, as_of=T.date())
     # Band within each cycle's book - see signals.apply_percentile_bands.
     sig.apply_percentile_bands(res)
 
@@ -208,6 +209,6 @@ if __name__ == "__main__":
         print(f"  {len(f)} accounts, {int(f.churn.sum())} churn in next 90d")
         frames.append(f)
     df = pd.concat(frames, ignore_index=True)
-    df.to_csv(Path(__file__).parent / "data" / "backtest_results.csv", index=False)
+    df.to_csv(ROOT / "data" / "backtest_results.csv", index=False)
     report(df, data)
     print(f"\nper-account results -> data/backtest_results.csv")

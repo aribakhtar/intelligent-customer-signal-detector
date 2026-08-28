@@ -1,17 +1,12 @@
 # Secrets - never commit
 .env
 .env.*
-!.env.example
 
 __pycache__/
 *.pyc
 
-# Generated outputs - reproducible by running the pipeline
-data/signal_summary.csv
-data/backtest_results.csv
-data/llm_eval_scores.csv
-data/nodes*.json
-inbox/
+# Generated: every file in here is reproducible by running the pipeline
+data/
 
-# Local artefacts
+# Built artefacts
 *.pptx
